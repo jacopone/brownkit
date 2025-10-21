@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🎉 Initial Release - MVP+
 
-First production-ready release of Brownfield-Kit with comprehensive features for transforming brownfield codebases into Speckit-ready projects.
+First production-ready release of BrownKit with comprehensive features for transforming brownfield codebases into Speckit-ready projects.
 
 ### Added
 
@@ -281,9 +281,9 @@ This project follows [Semantic Versioning](https://semver.org/):
 
 ## Links
 
-- **Repository**: https://github.com/brownfield-kit/brownfield-kit
-- **Documentation**: https://brownfield-kit.readthedocs.io
-- **Issue Tracker**: https://github.com/brownfield-kit/brownfield-kit/issues
+- **Repository**: https://github.com/brownkit/brownkit
+- **Documentation**: https://brownkit.readthedocs.io
+- **Issue Tracker**: https://github.com/brownkit/brownkit/issues
 - **Speckit**: https://github.com/specify/speckit
 
 ---
@@ -298,5 +298,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-[Unreleased]: https://github.com/brownfield-kit/brownfield-kit/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/brownfield-kit/brownfield-kit/releases/tag/v0.1.0
+[Unreleased]: https://github.com/brownkit/brownkit/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/brownkit/brownkit/releases/tag/v0.1.0

@@ -13,9 +13,9 @@ from brownfield.cli.validate import validate
 
 
 @click.group()
-@click.version_option(version="0.1.0", prog_name="brownfield-kit")
+@click.version_option(version="0.1.0", prog_name="brownkit")
 def brownfield():
-    """Brownfield-Kit: AI-driven workflow for transitioning brownfield codebases to Speckit-ready state."""
+    """BrownKit: AI-driven workflow for transitioning brownfield codebases to Speckit-ready state."""
     pass
 
 

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/project.json",
+  "$id": "https://brownkit.dev/schemas/project.json",
   "title": "BrownfieldProject",
   "description": "Metadata for a project undergoing brownfield transformation",
   "type": "object",

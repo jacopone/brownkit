@@ -5,7 +5,7 @@ Version Change: TEMPLATE → 1.0.0
 Change Type: Initial Constitution Creation
 Date: 2025-10-12
 
-New Constitution: Brownfield-Kit
+New Constitution: BrownKit
 Purpose: Defines governance for transitioning brownfield codebases to Speckit-ready state
 
 Core Principles Added:
@@ -40,15 +40,15 @@ Follow-up TODOs:
 - Create assessment report template: .specify/memory/assessment-report.md
 -->
 
-# Brownfield-Kit Constitution
+# BrownKit Constitution
 
 ## Purpose & Scope
 
-Brownfield-Kit is a transition system that prepares codebases for Speckit adoption. It provides a structured workflow for AI agents to transform unstructured, under-tested, and poorly documented codebases into projects that meet the safety, quality, and structural standards required for spec-driven development.
+BrownKit is a transition system that prepares codebases for Speckit adoption. It provides a structured workflow for AI agents to transform unstructured, under-tested, and poorly documented codebases into projects that meet the safety, quality, and structural standards required for spec-driven development.
 
-**Relationship to Speckit**: Brownfield-Kit is a prerequisite system. Once graduation criteria are met, Brownfield-Kit generates a project-specific Speckit constitution and hands off control to Speckit workflows.
+**Relationship to Speckit**: BrownKit is a prerequisite system. Once graduation criteria are met, BrownKit generates a project-specific Speckit constitution and hands off control to Speckit workflows.
 
-**When to Use Brownfield-Kit**:
+**When to Use BrownKit**:
 - Codebases lacking test infrastructure (< 60% coverage on core modules)
 - Projects with cyclomatic complexity > 10 (measured via lizard or equivalent)
 - Disorganized directory structures violating ecosystem conventions
@@ -56,7 +56,7 @@ Brownfield-Kit is a transition system that prepares codebases for Speckit adopti
 - No CI/CD pipeline or failing builds with warnings
 - Critical security vulnerabilities present
 
-**When NOT to Use Brownfield-Kit**:
+**When NOT to Use BrownKit**:
 - Greenfield projects (new codebases) → Use Speckit directly
 - Well-maintained codebases meeting readiness gates → Use Speckit directly
 - Simple scripts or tools (< 500 lines, single file) → No workflow needed
@@ -180,7 +180,7 @@ Brownfield-Kit is a transition system that prepares codebases for Speckit adopti
 
 ## Readiness Gates (Graduation to Speckit)
 
-**Brownfield-Kit → Speckit Transition Criteria**:
+**BrownKit → Speckit Transition Criteria**:
 
 Graduation occurs when ALL of the following gates are met:
 
@@ -218,14 +218,14 @@ Graduation occurs when ALL of the following gates are met:
    - .gitignore properly configured for ecosystem
 
 **Upon Graduation**:
-- Brownfield-Kit generates initial Speckit constitution tailored to project
+- BrownKit generates initial Speckit constitution tailored to project
 - Assessment report and decision log archived in `.specify/memory/brownfield-archive/`
 - State file updated with graduation timestamp
 - Handoff summary created: `brownfield-graduation-report.md`
 
 ## AI Self-Assessment Requirements
 
-AI agents operating in Brownfield-Kit mode MUST document the following in the initial assessment phase:
+AI agents operating in BrownKit mode MUST document the following in the initial assessment phase:
 
 1. **Language/Framework Detection**:
    - Primary language (with confidence: High/Medium/Low)
@@ -262,7 +262,7 @@ AI agents operating in Brownfield-Kit mode MUST document the following in the in
 
 ## Phase Governance
 
-Brownfield-Kit operates in 5 sequential phases. Each phase has entry criteria, activities, and exit gates.
+BrownKit operates in 5 sequential phases. Each phase has entry criteria, activities, and exit gates.
 
 ### Phase 0: Assessment (ENTRY POINT)
 

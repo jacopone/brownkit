@@ -1,4 +1,4 @@
-"""Environment configuration for Brownfield-Kit.
+"""Environment configuration for BrownKit.
 
 Supports environment variables:
 - BROWNFIELD_PROJECT_ROOT: Override project root directory
@@ -16,7 +16,7 @@ from typing import Optional
 
 
 class BrownfieldConfig:
-    """Configuration manager for Brownfield-Kit."""
+    """Configuration manager for BrownKit."""
 
     @staticmethod
     def get_project_root() -> Path:

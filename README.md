@@ -1,10 +1,10 @@
-# Brownfield-Kit
+# BrownKit
 
 AI-driven workflow for transitioning brownfield codebases to Speckit-ready state with automated assessment, structure fixes, testing infrastructure, and quality gates.
 
 ## Overview
 
-Brownfield-Kit is a Python CLI tool that helps transform poorly-maintained codebases into high-quality, well-tested projects ready for spec-driven development with Speckit.
+BrownKit is a Python CLI tool that helps transform poorly-maintained codebases into high-quality, well-tested projects ready for spec-driven development with Speckit.
 
 ### Key Features
 
@@ -26,8 +26,8 @@ Brownfield-Kit is a Python CLI tool that helps transform poorly-maintained codeb
 ### From Source
 
 ```bash
-git clone https://github.com/brownfield-kit/brownfield-kit.git
-cd brownfield-kit
+git clone https://github.com/brownkit/brownkit.git
+cd brownkit
 python -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 # or .venv\Scripts\activate  # Windows
@@ -112,7 +112,7 @@ Each phase has clear entry/exit criteria and creates atomic git commits for reve
 
 ### Re-entry & Resumption
 
-Brownfield-Kit supports two types of workflow interruption handling:
+BrownKit supports two types of workflow interruption handling:
 
 **Quality Regression Re-entry**: If metrics degrade after graduation, the tool automatically detects regression and re-enters the appropriate phase:
 
@@ -203,7 +203,7 @@ paths = ["vendor/", "third_party/"]
 
 ## Environment Variables
 
-Brownfield-Kit supports environment variables for flexible configuration:
+BrownKit supports environment variables for flexible configuration:
 
 ### Path Configuration
 
@@ -273,7 +273,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install brownfield
-        run: pip install brownfield-kit
+        run: pip install brownkit
 
       - name: Check brownfield status
         run: |
@@ -323,8 +323,8 @@ exit 0
 ### Setup Development Environment
 
 ```bash
-git clone https://github.com/brownfield-kit/brownfield-kit.git
-cd brownfield-kit
+git clone https://github.com/brownkit/brownkit.git
+cd brownkit
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
@@ -351,7 +351,7 @@ lizard -C 10 src/brownfield/        # Check complexity
 
 ## Architecture
 
-Brownfield-Kit uses a plugin architecture:
+BrownKit uses a plugin architecture:
 
 - **CLI Layer**: Click-based commands
 - **Orchestrator**: Phase state machine
@@ -381,12 +381,12 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Links
 
-- [Documentation](https://brownfield-kit.readthedocs.io)
-- [Issue Tracker](https://github.com/brownfield-kit/brownfield-kit/issues)
+- [Documentation](https://brownkit.readthedocs.io)
+- [Issue Tracker](https://github.com/brownkit/brownkit/issues)
 - [Speckit](https://github.com/specify/speckit)
 
 ## Support
 
 - GitHub Issues: Report bugs and request features
 - Discussions: Ask questions and share ideas
-- Slack: #brownfield-kit channel
+- Slack: #brownkit channel

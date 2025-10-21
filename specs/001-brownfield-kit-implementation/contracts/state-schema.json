@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.org/schemas/state-schema.json",
+  "$id": "https://brownkit.org/schemas/state-schema.json",
   "title": "Brownfield State Schema",
   "description": "JSON Schema for brownfield-state.json tracking workflow progression",
   "type": "object",
@@ -89,7 +89,7 @@
     },
     "ai_agent_version": {
       "type": "string",
-      "description": "Version of Brownfield-Kit that created this state",
+      "description": "Version of BrownKit that created this state",
       "example": "0.1.0"
     }
   },

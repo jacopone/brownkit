@@ -108,4 +108,4 @@ Quality gates passed: **{{GATES_PASSED}}** / **{{GATES_TOTAL}}**
 
 ---
 
-*This validation report was generated automatically by Brownfield-Kit.*
+*This validation report was generated automatically by BrownKit.*

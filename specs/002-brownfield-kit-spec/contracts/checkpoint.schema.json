@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/checkpoint.json",
+  "$id": "https://brownkit.dev/schemas/checkpoint.json",
   "title": "Checkpoint",
   "description": "Recovery checkpoint for interrupted phases",
   "type": "object",

@@ -133,7 +133,7 @@ class GraduationReport:
         md += f"- **Archived Artifacts**: {len(self.archived_artifacts)} files\n"
 
         md += "\n## Next Steps\n\n"
-        md += "Your project has graduated from Brownfield-Kit and is now Speckit-ready!\n\n"
+        md += "Your project has graduated from BrownKit and is now Speckit-ready!\n\n"
         md += f"1. Review generated Speckit constitution: `{self.speckit_constitution}`\n"
         md += '2. Start spec-driven development: `/speckit.specify "your feature"`\n'
         md += "3. Archived brownfield artifacts: `.specify/memory/brownfield-archive/`\n"

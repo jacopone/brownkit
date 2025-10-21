@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/config.json",
+  "$id": "https://brownkit.dev/schemas/config.json",
   "title": "Configuration",
   "description": "User-defined settings for brownfield workflow",
   "type": "object",

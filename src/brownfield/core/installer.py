@@ -1,5 +1,5 @@
 """
-Installation module for Brownfield-Kit.
+Installation module for BrownKit.
 
 Handles copying templates, creating directory structure, and initializing
 the brownfield project environment without overwriting Spec-Kit files.
@@ -15,7 +15,7 @@ from brownfield.core.validator import check_conflicts
 
 
 def install_brownfield_kit(force: bool = False) -> Dict[str, any]:
-    """Install Brownfield-Kit into the current Spec-Kit project.
+    """Install BrownKit into the current Spec-Kit project.
 
     Args:
         force: If True, overwrite existing files

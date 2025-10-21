@@ -57,7 +57,7 @@ go install github.com/securego/gosec/v2/cmd/gosec@latest
 
 ```bash
 # Download latest release
-curl -L https://github.com/brownfield-kit/brownfield/releases/latest/download/brownfield -o brownfield
+curl -L https://github.com/brownkit/brownfield/releases/latest/download/brownfield -o brownfield
 
 # Make executable
 chmod +x brownfield
@@ -73,7 +73,7 @@ brownfield --version
 
 ```bash
 # Clone repository
-git clone https://github.com/brownfield-kit/brownfield.git
+git clone https://github.com/brownkit/brownfield.git
 cd brownfield
 
 # Run installation script
@@ -467,10 +467,10 @@ After completing the quickstart:
 
 ## Support
 
-- **Documentation**: https://brownfield-kit.dev/docs
-- **GitHub Issues**: https://github.com/brownfield-kit/brownfield/issues
-- **Discussions**: https://github.com/brownfield-kit/brownfield/discussions
-- **Examples**: https://github.com/brownfield-kit/examples
+- **Documentation**: https://brownkit.dev/docs
+- **GitHub Issues**: https://github.com/brownkit/brownfield/issues
+- **Discussions**: https://github.com/brownkit/brownfield/discussions
+- **Examples**: https://github.com/brownkit/examples
 
 ## License
 

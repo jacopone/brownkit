@@ -1,9 +1,9 @@
-# Feature Specification: Brownfield-Kit Implementation
+# Feature Specification: BrownKit Implementation
 
-**Feature Branch**: `001-brownfield-kit-implementation`
+**Feature Branch**: `001-brownkit-implementation`
 **Created**: 2025-10-12
 **Status**: Draft
-**Input**: User description: "Brownfield-Kit Implementation - AI-driven workflow for transitioning brownfield codebases to Speckit-ready state with automated assessment, structure fixes, testing infrastructure, and quality gates"
+**Input**: User description: "BrownKit Implementation - AI-driven workflow for transitioning brownfield codebases to Speckit-ready state with automated assessment, structure fixes, testing infrastructure, and quality gates"
 
 ## Clarifications
 

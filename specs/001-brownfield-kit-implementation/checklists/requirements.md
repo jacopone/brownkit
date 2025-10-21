@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Brownfield-Kit Implementation
+# Specification Quality Checklist: BrownKit Implementation
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-10-12

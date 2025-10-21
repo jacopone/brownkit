@@ -1,8 +1,8 @@
 """
-Brownfield-Kit CLI - Main command-line interface.
+BrownKit CLI - Main command-line interface.
 
 This module provides the `brownfield init` command for installing
-Brownfield-Kit into existing Spec-Kit projects.
+BrownKit into existing Spec-Kit projects.
 """
 
 import click
@@ -15,9 +15,9 @@ from brownfield.core.installer import install_brownfield_kit
 @click.group()
 @click.version_option(version="0.1.0")
 def cli():
-    """Brownfield-Kit: Spec-Kit plugin for legacy code remediation.
+    """BrownKit: Spec-Kit plugin for legacy code remediation.
 
-    Install Brownfield-Kit into your Spec-Kit project to add quality
+    Install BrownKit into your Spec-Kit project to add quality
     assessment and remediation workflows before AI-driven feature development.
     """
     pass
@@ -30,9 +30,9 @@ def cli():
     help="Force installation even if conflicts detected"
 )
 def init(force: bool):
-    """Initialize Brownfield-Kit in the current Spec-Kit project.
+    """Initialize BrownKit in the current Spec-Kit project.
 
-    This command installs Brownfield-Kit slash commands, templates, and
+    This command installs BrownKit slash commands, templates, and
     bash scripts into your existing Spec-Kit project structure without
     overwriting any Spec-Kit files.
 
@@ -47,7 +47,7 @@ def init(force: bool):
     - Spec-Kit must be installed (.specify/ directory exists)
     - Project must be in a git repository
     """
-    click.echo("=== Brownfield-Kit Installation ===\n")
+    click.echo("=== BrownKit Installation ===\n")
 
     # Validate Spec-Kit installation
     validation_result = validate_speckit_installation()
@@ -71,7 +71,7 @@ def init(force: bool):
         click.echo()
 
     # Perform installation
-    click.echo("Installing Brownfield-Kit components...")
+    click.echo("Installing BrownKit components...")
 
     try:
         install_result = install_brownfield_kit(force=force)

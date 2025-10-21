@@ -1,1 +1,1 @@
-"""Brownfield-Kit core utilities."""
+"""BrownKit core utilities."""

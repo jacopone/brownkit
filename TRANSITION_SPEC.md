@@ -1,4 +1,4 @@
-# Brownfield-Kit: Spec-Kit Plugin for Legacy Code Remediation
+# BrownKit: Spec-Kit Plugin for Legacy Code Remediation
 
 ## Problem Statement
 
@@ -8,19 +8,19 @@ Brownfield projects with legacy code cannot safely adopt AI-driven feature devel
 
 ## Solution Overview
 
-Brownfield-Kit is a Spec-Kit plugin that adds upstream remediation workflow BEFORE `/speckit.specify`. It enforces quality gates (CCN < 10, coverage > 80%, zero critical vulns) and only graduates code to Spec-Kit's feature development phase after validation.
+BrownKit is a Spec-Kit plugin that adds upstream remediation workflow BEFORE `/speckit.specify`. It enforces quality gates (CCN < 10, coverage > 80%, zero critical vulns) and only graduates code to Spec-Kit's feature development phase after validation.
 
-**Relationship to Spec-Kit**: Brownfield-Kit is to Spec-Kit as BP-Kit is to Spec-Kit:
+**Relationship to Spec-Kit**: BrownKit is to Spec-Kit as BP-Kit is to Spec-Kit:
 - **BP-Kit**: Business plan → Constitutional principles (upstream preparation)
-- **Brownfield-Kit**: Legacy code → Quality baseline (upstream remediation)
+- **BrownKit**: Legacy code → Quality baseline (upstream remediation)
 - **Spec-Kit**: Specifications → Working code (downstream implementation)
 
 ## User Stories
 
-### User Story 1 - Install Brownfield-Kit in Existing Spec-Kit Project (Priority: P0) 🎯 MVP
+### User Story 1 - Install BrownKit in Existing Spec-Kit Project (Priority: P0) 🎯 MVP
 
 **As a** developer with a legacy codebase
-**I want to** install Brownfield-Kit into my existing Spec-Kit project
+**I want to** install BrownKit into my existing Spec-Kit project
 **So that** I can remediate technical debt before using Spec-Kit for features
 
 **Acceptance Criteria**:
@@ -207,7 +207,7 @@ PHASE 1: Spec-Kit Feature Development (Downstream)
 **Validation Logic**:
 ```python
 def check_speckit_conflicts(project_dir: Path) -> List[str]:
-    """Ensure Brownfield-Kit won't overwrite Spec-Kit files."""
+    """Ensure BrownKit won't overwrite Spec-Kit files."""
     speckit_commands = [
         ".claude/commands/speckit.constitution.md",
         ".claude/commands/speckit.specify.md",
@@ -265,7 +265,7 @@ brownfield-assess.sh --json
 ## Success Criteria
 
 ### MVP Success (User Stories 1-4)
-- ✅ Install Brownfield-Kit into existing Spec-Kit project without conflicts
+- ✅ Install BrownKit into existing Spec-Kit project without conflicts
 - ✅ Run `/brownfield.ingest` → `/brownfield.assess` → `/brownfield.plan` workflow
 - ✅ Generated artifacts follow Spec-Kit patterns (numbered dirs, templates, checklists)
 - ✅ Constitution updated with codebase patterns

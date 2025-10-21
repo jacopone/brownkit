@@ -331,8 +331,8 @@ list_specs() {
 # Usage
 list_specs
 # Output:
-# 001-brownfield-kit-implementation       active
-# 002-brownfield-kit-spec                 draft
+# 001-brownkit-implementation       active
+# 002-brownkit-spec                 draft
 ```
 
 #### Pattern: Validating Directory Structure

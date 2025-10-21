@@ -8,7 +8,7 @@ lifecycle: persistent
 
 # Environment Variables
 
-Brownfield-Kit supports environment variables for customizing behavior without command-line flags.
+BrownKit supports environment variables for customizing behavior without command-line flags.
 
 ## Configuration Variables
 
@@ -176,7 +176,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install brownfield
-        run: pip install brownfield-kit
+        run: pip install brownkit
 
       - name: Assess codebase
         run: brownfield assess
@@ -207,7 +207,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install brownfield
-RUN pip install brownfield-kit
+RUN pip install brownkit
 
 # Set brownfield configuration
 ENV BROWNFIELD_PROJECT_ROOT=/app

@@ -2,7 +2,7 @@
 
 **Generated**: 2025-10-12 19:54:54 UTC
 **Language**: python
-**Project**: brownfield-kit
+**Project**: brownkit
 
 ## Overview
 
@@ -23,7 +23,7 @@ mkdir -p docs
 
 ### ⚠️ CRITICAL: Use IDE Refactoring for Correct Import Updates
 
-Brownfield-Kit does NOT move files automatically to avoid breaking your code with
+BrownKit does NOT move files automatically to avoid breaking your code with
 naive import updates. Your IDE has proper AST parsing and will update imports correctly.
 
 **PyCharm Users:**

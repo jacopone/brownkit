@@ -1,13 +1,13 @@
-# Implementation Plan: Brownfield-Kit - Spec-Kit Plugin for Legacy Code Remediation
+# Implementation Plan: BrownKit - Spec-Kit Plugin for Legacy Code Remediation
 
-**Branch**: `002-brownfield-kit-spec` | **Date**: 2025-10-20 | **Spec**: [spec.md](spec.md)
-**Input**: Feature specification from `/specs/002-brownfield-kit-spec/spec.md`
+**Branch**: `002-brownkit-spec` | **Date**: 2025-10-20 | **Spec**: [spec.md](spec.md)
+**Input**: Feature specification from `/specs/002-brownkit-spec/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-Brownfield-Kit is a Spec-Kit plugin that enforces quality improvement as a mandatory prerequisite before AI-driven feature development. It provides 6 slash commands (`/brownfield.ingest`, `/brownfield.assess`, `/brownfield.plan`, `/brownfield.remediate`, `/brownfield.validate`, `/brownfield.graduate`) backed by self-contained bash scripts that analyze Python codebases using Lizard (CCN), pytest (coverage), and Bandit (security). The tool creates numbered remediation projects in `.specify/brownfield/NNN/`, enforces quality gates (CCN < 10, coverage > 80%, zero critical vulns), and graduates codebases to Spec-Kit's feature development workflow only after validation.
+BrownKit is a Spec-Kit plugin that enforces quality improvement as a mandatory prerequisite before AI-driven feature development. It provides 6 slash commands (`/brownfield.ingest`, `/brownfield.assess`, `/brownfield.plan`, `/brownfield.remediate`, `/brownfield.validate`, `/brownfield.graduate`) backed by self-contained bash scripts that analyze Python codebases using Lizard (CCN), pytest (coverage), and Bandit (security). The tool creates numbered remediation projects in `.specify/brownfield/NNN/`, enforces quality gates (CCN < 10, coverage > 80%, zero critical vulns), and graduates codebases to Spec-Kit's feature development workflow only after validation.
 
 **Technical Approach**: Follow Spec-Kit's architectural pattern with markdown slash commands + self-contained bash scripts (no external dependencies). Bash scripts directly invoke quality tools, generate markdown reports, and return structured JSON. Total estimated code: ~520 lines of bash across 7 scripts.
 
@@ -48,7 +48,7 @@ Brownfield-Kit is a Spec-Kit plugin that enforces quality improvement as a manda
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-**Checking against Brownfield-Kit Constitution** (`.specify/memory/constitution.md`):
+**Checking against BrownKit Constitution** (`.specify/memory/constitution.md`):
 
 ### I. ASSESSMENT_DRIVEN_DEVELOPMENT ✅
 - **Requirement**: All changes preceded by automated analysis
@@ -92,7 +92,7 @@ Brownfield-Kit is a Spec-Kit plugin that enforces quality improvement as a manda
 ### Documentation (this feature)
 
 ```
-specs/002-brownfield-kit-spec/
+specs/002-brownkit-spec/
 ├── plan.md              # This file (/speckit.plan output)
 ├── research.md          # Phase 0 output (tool research, bash patterns)
 ├── data-model.md        # Phase 1 output (state structures, config schema)
@@ -220,7 +220,7 @@ All design decisions align with constitutional principles:
    - **Research needed**: Git status checks, test execution, rollback mechanisms
    - **Output**: Checkpoint workflow design
 
-**Output Location**: `specs/002-brownfield-kit-spec/research.md`
+**Output Location**: `specs/002-brownkit-spec/research.md`
 
 ---
 
@@ -350,7 +350,7 @@ See Phase 1 output (to be generated).
 
 ## Next Steps After Phase 1
 
-1. **Agent Context Update**: Run `.specify/scripts/bash/update-agent-context.sh claude` to add Brownfield-Kit technologies to Claude's context
+1. **Agent Context Update**: Run `.specify/scripts/bash/update-agent-context.sh claude` to add BrownKit technologies to Claude's context
 2. **Generate Tasks**: Run `/speckit.tasks` to break down implementation into concrete tasks
 3. **Implementation**: Execute tasks to build bash scripts, slash commands, and templates
 4. **Testing**: Validate on sample brownfield project (this brownfield repository itself!)

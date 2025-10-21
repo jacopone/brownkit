@@ -1,5 +1,5 @@
 #!/bin/bash
-# Test runner script for Brownfield-Kit
+# Test runner script for BrownKit
 # Provides convenient shortcuts for running different test suites
 
 set -e
@@ -99,7 +99,7 @@ case "$TEST_TYPE" in
         ;;
 
     help|--help|-h)
-        echo "Brownfield-Kit Test Runner"
+        echo "BrownKit Test Runner"
         echo ""
         echo "Usage: ./scripts/run_tests.sh [TEST_TYPE] [OPTIONS]"
         echo ""

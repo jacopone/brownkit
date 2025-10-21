@@ -1,9 +1,9 @@
-# Feature Specification: Brownfield-Kit - Spec-Kit Plugin for Legacy Code Remediation
+# Feature Specification: BrownKit - Spec-Kit Plugin for Legacy Code Remediation
 
-**Feature Branch**: `002-brownfield-kit-spec`
+**Feature Branch**: `002-brownkit-spec`
 **Created**: 2025-10-20
 **Status**: Draft
-**Input**: User description: "Brownfield-Kit: Spec-Kit Plugin for Legacy Code Remediation"
+**Input**: User description: "BrownKit: Spec-Kit Plugin for Legacy Code Remediation"
 
 ## Problem Statement
 
@@ -11,13 +11,13 @@ Brownfield projects with legacy code cannot safely adopt AI-driven feature devel
 
 **The Gap**: No tool enforces quality improvement as a prerequisite gate for AI feature development in brownfield codebases.
 
-**Solution**: Brownfield-Kit is a Spec-Kit plugin that adds upstream remediation workflow BEFORE `/speckit.specify`. It enforces quality gates and only graduates code to Spec-Kit's feature development phase after validation.
+**Solution**: BrownKit is a Spec-Kit plugin that adds upstream remediation workflow BEFORE `/speckit.specify`. It enforces quality gates and only graduates code to Spec-Kit's feature development phase after validation.
 
 ## User Scenarios & Testing
 
-### User Story 1 - Install Brownfield-Kit in Existing Spec-Kit Project (Priority: P0) 🎯 MVP
+### User Story 1 - Install BrownKit in Existing Spec-Kit Project (Priority: P0) 🎯 MVP
 
-A developer has an existing Spec-Kit project and wants to add Brownfield-Kit's remediation capabilities without breaking their current workflow. They run `brownfield init` and the tool installs cleanly alongside Spec-Kit, creating new `/brownfield.*` commands while preserving all existing `/speckit.*` commands.
+A developer has an existing Spec-Kit project and wants to add BrownKit's remediation capabilities without breaking their current workflow. They run `brownfield init` and the tool installs cleanly alongside Spec-Kit, creating new `/brownfield.*` commands while preserving all existing `/speckit.*` commands.
 
 **Why this priority**: Foundation for all other features. Without successful installation, no other capabilities are accessible. This is the entry point for all users.
 
@@ -26,8 +26,8 @@ A developer has an existing Spec-Kit project and wants to add Brownfield-Kit's r
 **Acceptance Scenarios**:
 
 1. **Given** a project with Spec-Kit already installed, **When** developer runs `brownfield init`, **Then** `.specify/brownfield/` directory is created with proper structure
-2. **Given** Spec-Kit slash commands exist in `.claude/commands/`, **When** Brownfield-Kit installs, **Then** no Spec-Kit files are overwritten and 6 new `/brownfield.*` commands are added
-3. **Given** Brownfield-Kit is installed, **When** developer runs `/brownfield.ingest`, **Then** command executes successfully without errors
+2. **Given** Spec-Kit slash commands exist in `.claude/commands/`, **When** BrownKit installs, **Then** no Spec-Kit files are overwritten and 6 new `/brownfield.*` commands are added
+3. **Given** BrownKit is installed, **When** developer runs `/brownfield.ingest`, **Then** command executes successfully without errors
 4. **Given** both tools are installed, **When** developer runs `/speckit.specify`, **Then** Spec-Kit functionality remains unchanged
 
 ---
@@ -155,7 +155,7 @@ A developer has validated their codebase meets quality gates and wants to offici
   - V1: Thresholds are hardcoded (CCN < 10, coverage > 80%)
   - Future: `.specify/brownfield-config.yaml` allows threshold customization
 
-- How does Brownfield-Kit detect existing Spec-Kit installation?
+- How does BrownKit detect existing Spec-Kit installation?
   - Checks for `.specify/` directory existence
   - Validates presence of `.specify/memory/constitution.md`
   - If not found, prompts to install Spec-Kit first
@@ -164,7 +164,7 @@ A developer has validated their codebase meets quality gates and wants to offici
 
 ### Spec-Kit Compatibility Pattern
 
-Brownfield-Kit follows the **exact same architecture** as Spec-Kit to ensure seamless integration:
+BrownKit follows the **exact same architecture** as Spec-Kit to ensure seamless integration:
 
 **Architecture Components**:
 1. **Markdown Slash Commands** (`.claude/commands/brownfield.*.md`)
@@ -198,7 +198,7 @@ Brownfield-Kit follows the **exact same architecture** as Spec-Kit to ensure sea
 .specify/scripts/bash/create-new-feature.sh --json "feature-name"
 # Returns: {"BRANCH_NAME": "...", "SPEC_FILE": "..."}
 
-# Brownfield-Kit pattern (brownfield-assess.sh):
+# BrownKit pattern (brownfield-assess.sh):
 .specify/scripts/bash/brownfield-assess.sh --json
 # Returns: {"ASSESSMENT_FILE": "...", "METRICS": {...}}
 ```
@@ -296,7 +296,7 @@ brownfield/
 
 ### Functional Requirements
 
-- **FR-001**: System MUST install Brownfield-Kit into existing Spec-Kit projects without overwriting any Spec-Kit files or configurations
+- **FR-001**: System MUST install BrownKit into existing Spec-Kit projects without overwriting any Spec-Kit files or configurations
 - **FR-002**: System MUST create 6 slash commands (`/brownfield.ingest`, `/brownfield.assess`, `/brownfield.plan`, `/brownfield.remediate`, `/brownfield.validate`, `/brownfield.graduate`) in `templates/commands/`
 - **FR-003**: System MUST create self-contained bash scripts in `.specify/scripts/bash/` that directly invoke quality analysis tools (Lizard, pytest, Bandit) following Spec-Kit architectural patterns
 - **FR-004**: System MUST return structured JSON output from all bash scripts for programmatic parsing
@@ -311,7 +311,7 @@ brownfield/
 - **FR-013**: System MUST stop remediation execution if any checkpoint fails (tests break, complexity increases)
 - **FR-014**: System MUST validate quality gates pass before allowing graduation
 - **FR-015**: System MUST update `.specify/memory/constitution.md` with discovered patterns from codebase analysis
-- **FR-016**: System MUST share constitution file between Brownfield-Kit and Spec-Kit (no duplication)
+- **FR-016**: System MUST share constitution file between BrownKit and Spec-Kit (no duplication)
 - **FR-017**: System MUST detect conflicts with Spec-Kit installation and prevent overwrites
 - **FR-018**: System MUST support Python 3.11+ codebases (V1 scope: Python only)
 
@@ -329,22 +329,22 @@ brownfield/
 
 ### Measurable Outcomes
 
-- **SC-001**: Developers can install Brownfield-Kit into existing Spec-Kit project in under 2 minutes without any file conflicts
+- **SC-001**: Developers can install BrownKit into existing Spec-Kit project in under 2 minutes without any file conflicts
 - **SC-002**: Codebase analysis completes within 5 minutes for projects up to 10,000 lines of code
 - **SC-003**: Assessment accurately identifies 100% of functions with CCN > 10 when compared to manual Lizard execution
 - **SC-004**: Remediation plans contain specific, actionable tasks with zero "TODO" or "TBD" placeholders
 - **SC-005**: Checkpoint validation detects test failures within 30 seconds of introducing breaking changes
 - **SC-006**: Quality gate validation completes in under 3 minutes for codebases up to 10,000 lines
-- **SC-007**: Constitution updates preserve existing Spec-Kit patterns (no data loss during Brownfield-Kit installation)
+- **SC-007**: Constitution updates preserve existing Spec-Kit patterns (no data loss during BrownKit installation)
 - **SC-008**: 90% of developers successfully complete ingest → assess → plan workflow on first attempt without errors
 - **SC-009**: Graduated codebases pass all quality gates (CCN < 10, coverage > 80%, zero critical vulnerabilities)
-- **SC-010**: Brownfield-Kit slash commands coexist with Spec-Kit commands with zero namespace collisions
+- **SC-010**: BrownKit slash commands coexist with Spec-Kit commands with zero namespace collisions
 
 ## Assumptions
 
 - Developers have Python 3.11+ installed on their system
 - Developers have pytest, Lizard, and Bandit tools available (system-level or via virtualenv)
-- Spec-Kit is already installed and properly configured before Brownfield-Kit installation
+- Spec-Kit is already installed and properly configured before BrownKit installation
 - Projects use git for version control (checkpoint validation relies on git status)
 - Test suites exist and can be executed via `pytest` command (remediation checkpoint assumes tests are runnable)
 - Developers understand technical debt concepts (CCN, test coverage, security vulnerabilities)

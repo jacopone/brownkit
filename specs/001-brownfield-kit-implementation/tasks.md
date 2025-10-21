@@ -1,6 +1,6 @@
-# Tasks: Brownfield-Kit Implementation
+# Tasks: BrownKit Implementation
 
-**Input**: Design documents from `/specs/001-brownfield-kit-implementation/`
+**Input**: Design documents from `/specs/001-brownkit-implementation/`
 **Prerequisites**: plan.md (✓), spec.md (✓), research.md (✓), data-model.md (✓), contracts/ (✓)
 
 **Tests**: Tests are NOT requested in the feature specification - tasks focus on implementation only.

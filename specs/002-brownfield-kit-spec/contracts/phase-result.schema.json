@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/phase-result.json",
+  "$id": "https://brownkit.dev/schemas/phase-result.json",
   "title": "PhaseResult",
   "description": "Results and audit trail for a workflow phase",
   "type": "object",

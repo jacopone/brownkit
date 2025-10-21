@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/quality-gate.json",
+  "$id": "https://brownkit.dev/schemas/quality-gate.json",
   "title": "QualityGate",
   "description": "Quality gate definitions and validation results",
   "type": "object",

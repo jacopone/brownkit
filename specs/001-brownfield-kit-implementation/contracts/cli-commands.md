@@ -1,8 +1,8 @@
 # CLI Commands Contract
 
-**Feature**: Brownfield-Kit Implementation
+**Feature**: BrownKit Implementation
 **Created**: 2025-10-12
-**Purpose**: Define input/output contracts for all Brownfield-Kit CLI commands
+**Purpose**: Define input/output contracts for all BrownKit CLI commands
 
 ## Command Overview
 
@@ -162,7 +162,7 @@ Generated Refactoring Plan:
 ⚠️  IMPORTANT: Use IDE Refactoring Tools for Import Updates! ⚠️
 ═══════════════════════════════════════════════════════════════
 
-Brownfield-Kit generates a plan but does NOT move files automatically
+BrownKit generates a plan but does NOT move files automatically
 to avoid risks of breaking imports with naive string replacement.
 
 Recommended Workflow:
@@ -785,7 +785,7 @@ Next steps:
   2. Start spec-driven development: /speckit.specify "your feature"
   3. Share graduation report with team
 
-Thank you for using Brownfield-Kit! 🚀
+Thank you for using BrownKit! 🚀
 ```
 
 **Files Created**:
@@ -913,7 +913,7 @@ brownfield status [OPTIONS]
 
 **Success (Exit Code 0)**:
 ```
-📊 Brownfield-Kit Status
+📊 BrownKit Status
 
 Project: /home/user/my-project
 Current Phase: Testing

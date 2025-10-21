@@ -1,12 +1,12 @@
 # Plugin Interface Contract
 
-**Feature**: Brownfield-Kit Implementation
+**Feature**: BrownKit Implementation
 **Created**: 2025-10-12
-**Purpose**: Define the language handler plugin interface for extending Brownfield-Kit
+**Purpose**: Define the language handler plugin interface for extending BrownKit
 
 ## Overview
 
-The plugin interface allows Brownfield-Kit to support multiple programming languages through a consistent API. Each language handler implements detection, structure remediation, testing, and quality gate installation specific to that ecosystem.
+The plugin interface allows BrownKit to support multiple programming languages through a consistent API. Each language handler implements detection, structure remediation, testing, and quality gate installation specific to that ecosystem.
 
 ## Base Interface: `LanguageHandler`
 

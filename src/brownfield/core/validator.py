@@ -1,8 +1,8 @@
 """
-Validation module for Brownfield-Kit installation.
+Validation module for BrownKit installation.
 
 Checks that Spec-Kit is properly installed and the project environment
-is ready for Brownfield-Kit installation.
+is ready for BrownKit installation.
 """
 
 from pathlib import Path

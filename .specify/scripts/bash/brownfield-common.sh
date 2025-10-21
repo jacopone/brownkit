@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# brownfield-common.sh - Shared utilities for Brownfield-Kit bash scripts
+# brownfield-common.sh - Shared utilities for BrownKit bash scripts
 #
 # This file contains reusable functions for all brownfield-*.sh scripts.
 # Pattern follows research.md findings for JSON generation, directory management,

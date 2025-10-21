@@ -1,8 +1,8 @@
-# Quickstart Guide: Brownfield-Kit Developer Onboarding
+# Quickstart Guide: BrownKit Developer Onboarding
 
-**Feature**: Brownfield-Kit Implementation
+**Feature**: BrownKit Implementation
 **Created**: 2025-10-12
-**Audience**: Developers contributing to Brownfield-Kit
+**Audience**: Developers contributing to BrownKit
 
 ## Prerequisites
 
@@ -34,8 +34,8 @@
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-org/brownfield-kit.git
-cd brownfield-kit
+git clone https://github.com/your-org/brownkit.git
+cd brownkit
 ```
 
 ### 2. Create Virtual Environment
@@ -70,7 +70,7 @@ brownfield --version
 
 Expected output:
 ```
-Brownfield-Kit version 0.1.0
+BrownKit version 0.1.0
 ```
 
 ## Running Your First Assessment
@@ -446,7 +446,7 @@ pip install -r requirements-dev.txt
 
 ### Issue: Git operations fail with "Not a git repository"
 
-**Solution**: Brownfield-Kit requires projects to be git repositories:
+**Solution**: BrownKit requires projects to be git repositories:
 ```bash
 cd /path/to/your/project
 git init
@@ -542,10 +542,10 @@ Phase: <phase-name>
 
 ## Getting Help
 
-- **Issues**: https://github.com/your-org/brownfield-kit/issues
-- **Discussions**: https://github.com/your-org/brownfield-kit/discussions
-- **Slack**: #brownfield-kit channel
+- **Issues**: https://github.com/your-org/brownkit/issues
+- **Discussions**: https://github.com/your-org/brownkit/discussions
+- **Slack**: #brownkit channel
 
 ---
 
-**Welcome to Brownfield-Kit development!** Start by running the assessment on fixture projects, explore the codebase modules, and contribute new language plugins or CLI commands.
+**Welcome to BrownKit development!** Start by running the assessment on fixture projects, explore the codebase modules, and contribute new language plugins or CLI commands.

@@ -1,11 +1,11 @@
-# Implementation Plan: Brownfield-Kit Implementation
+# Implementation Plan: BrownKit Implementation
 
-**Branch**: `001-brownfield-kit-implementation` | **Date**: 2025-10-12 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/specs/001-brownfield-kit-implementation/spec.md`
+**Branch**: `001-brownkit-implementation` | **Date**: 2025-10-12 | **Spec**: [spec.md](./spec.md)
+**Input**: Feature specification from `/specs/001-brownkit-implementation/spec.md`
 
 ## Summary
 
-Brownfield-Kit is an AI-driven CLI tool system that transitions poorly-maintained codebases to Speckit-ready state through automated assessment, structural remediation, test infrastructure bootstrapping, and quality gate installation. The system implements a 5-phase workflow (Assessment → Structure → Testing → Quality → Validation → Graduation) with safety mechanisms including checkpoint-based resumption, automatic build-failure rollback, and quantitative readiness gates. Upon graduation, it generates a project-specific Speckit constitution and archives all brownfield artifacts.
+BrownKit is an AI-driven CLI tool system that transitions poorly-maintained codebases to Speckit-ready state through automated assessment, structural remediation, test infrastructure bootstrapping, and quality gate installation. The system implements a 5-phase workflow (Assessment → Structure → Testing → Quality → Validation → Graduation) with safety mechanisms including checkpoint-based resumption, automatic build-failure rollback, and quantitative readiness gates. Upon graduation, it generates a project-specific Speckit constitution and archives all brownfield artifacts.
 
 **Technical Approach**: Python CLI tool with plugin architecture for language-specific handlers (Python, JavaScript, Rust, Go), phase orchestrator enforcing constitution principles, git-based reversibility, and rich terminal UI for user interaction.
 
@@ -48,7 +48,7 @@ Brownfield-Kit is an AI-driven CLI tool system that transitions poorly-maintaine
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-### Compliance with Brownfield-Kit Constitution Principles
+### Compliance with BrownKit Constitution Principles
 
 ✅ **I. ASSESSMENT_DRIVEN_DEVELOPMENT**
 - System implements `LanguageDetector` for evidence-based language/framework detection
@@ -109,7 +109,7 @@ The `ValidationRunner` checks all 7 gates before graduation:
 ### Documentation (this feature)
 
 ```
-specs/001-brownfield-kit-implementation/
+specs/001-brownkit-implementation/
 ├── plan.md              # This file
 ├── research.md          # Phase 0: Technology decisions and best practices
 ├── data-model.md        # Phase 1: Entity schemas and relationships

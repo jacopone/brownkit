@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://brownfield-kit.dev/schemas/metrics.json",
+  "$id": "https://brownkit.dev/schemas/metrics.json",
   "title": "Metrics",
   "description": "Code quality metrics snapshot",
   "type": "object",

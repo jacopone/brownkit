@@ -6,7 +6,7 @@ type: reference
 lifecycle: persistent
 ---
 
-# Brownfield-Kit Project Status
+# BrownKit Project Status
 
 **Version**: 0.1.0 (MVP+)
 **Status**: ✅ **Production Ready**
@@ -16,7 +16,7 @@ lifecycle: persistent
 
 ## Executive Summary
 
-Brownfield-Kit is **100% feature-complete** and ready for production use. All core functionality, enhancements, and test infrastructure have been implemented and documented.
+BrownKit is **100% feature-complete** and ready for production use. All core functionality, enhancements, and test infrastructure have been implemented and documented.
 
 ### Key Metrics
 
@@ -203,7 +203,7 @@ brownfield/
 
 ```bash
 # Install
-pip install brownfield-kit
+pip install brownkit
 
 # Assess project
 cd /path/to/brownfield/project
@@ -357,7 +357,7 @@ mypy src/brownfield/
 
 ### Development Resources
 
-- **Quickstart Guide**: [specs/001-brownfield-kit-implementation/quickstart.md](specs/001-brownfield-kit-implementation/quickstart.md)
+- **Quickstart Guide**: [specs/001-brownkit-implementation/quickstart.md](specs/001-brownkit-implementation/quickstart.md)
 - **Session Notes**: [.claude/sessions/](claude/sessions/)
 - **Test Fixtures**: [tests/fixtures/](tests/fixtures/)
 
@@ -413,7 +413,7 @@ mypy src/brownfield/
 
 ## Conclusion
 
-Brownfield-Kit v0.1.0 is **production-ready** and fully functional:
+BrownKit v0.1.0 is **production-ready** and fully functional:
 
 ✅ **Feature Complete**: All requirements met
 ✅ **Well Tested**: Contract + integration tests

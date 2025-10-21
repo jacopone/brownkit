@@ -9,14 +9,14 @@ lifecycle: ephemeral
 # Session Summary: Test Infrastructure Complete
 
 **Date**: 2025-10-21
-**Scope**: Creating comprehensive test infrastructure for Brownfield-Kit
+**Scope**: Creating comprehensive test infrastructure for BrownKit
 **Status**: ✅ Complete - All test infrastructure implemented
 
 ---
 
 ## Overview
 
-This session completed the final piece of Brownfield-Kit: a comprehensive test infrastructure with fixtures, contract tests, integration tests, and testing utilities.
+This session completed the final piece of BrownKit: a comprehensive test infrastructure with fixtures, contract tests, integration tests, and testing utilities.
 
 ---
 
@@ -475,7 +475,7 @@ The test infrastructure is now **complete and production-ready**:
 
 **Overall Project Status**: 🎉 **100% Complete - MVP+ with Full Test Suite!**
 
-The Brownfield-Kit is now:
+The BrownKit is now:
 - ✅ Feature-complete (all requirements met)
 - ✅ Well-tested (contract + integration tests)
 - ✅ Production-ready (error handling, caching, profiling)

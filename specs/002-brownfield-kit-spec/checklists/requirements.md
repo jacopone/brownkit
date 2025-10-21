@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Brownfield-Kit - Spec-Kit Plugin for Legacy Code Remediation
+# Specification Quality Checklist: BrownKit - Spec-Kit Plugin for Legacy Code Remediation
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-10-20

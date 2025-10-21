@@ -3,14 +3,14 @@ requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "brownfield-kit"
+name = "brownkit"
 version = "0.1.0"
 description = "Spec-Kit plugin for legacy code remediation - bash-based quality assessment and planning"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "Brownfield-Kit Contributors"}
+    {name = "BrownKit Contributors"}
 ]
 keywords = ["spec-kit", "brownfield", "legacy", "refactoring", "technical-debt", "code-quality"]
 classifiers = [
@@ -41,10 +41,10 @@ dev = [
 brownfield = "brownfield.cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/brownfield-kit/brownfield-kit"
-Documentation = "https://brownfield-kit.readthedocs.io"
-Repository = "https://github.com/brownfield-kit/brownfield-kit.git"
-"Bug Tracker" = "https://github.com/brownfield-kit/brownfield-kit/issues"
+Homepage = "https://github.com/brownkit/brownkit"
+Documentation = "https://brownkit.readthedocs.io"
+Repository = "https://github.com/brownkit/brownkit.git"
+"Bug Tracker" = "https://github.com/brownkit/brownkit/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

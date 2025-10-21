@@ -1,4 +1,4 @@
-"""Custom exceptions for Brownfield-Kit.
+"""Custom exceptions for BrownKit.
 
 Provides a clear exception hierarchy with actionable error messages.
 """
@@ -8,7 +8,7 @@ from typing import Optional
 
 
 class BrownfieldError(Exception):
-    """Base exception for all Brownfield-Kit errors."""
+    """Base exception for all BrownKit errors."""
 
     def __init__(self, message: str, suggestion: Optional[str] = None):
         """Initialize error with message and optional suggestion.

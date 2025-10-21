@@ -1,4 +1,4 @@
-"""Brownfield-Kit data models."""
+"""BrownKit data models."""
 
 from brownfield.models.assessment import (
     AssessmentReport,

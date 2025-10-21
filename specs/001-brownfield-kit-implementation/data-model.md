@@ -1,6 +1,6 @@
-# Data Model: Brownfield-Kit Implementation
+# Data Model: BrownKit Implementation
 
-**Feature**: Brownfield-Kit Implementation
+**Feature**: BrownKit Implementation
 **Created**: 2025-10-12
 **Status**: Complete
 
@@ -642,7 +642,7 @@ class GraduationReport:
             md += f"- {status} **{gate.name}**: {gate.current_value:.2f} (threshold: {gate.threshold:.2f})\n"
 
         md += f"\n## Next Steps\n\n"
-        md += f"Your project has graduated from Brownfield-Kit and is now Speckit-ready!\n\n"
+        md += f"Your project has graduated from BrownKit and is now Speckit-ready!\n\n"
         md += f"1. Review generated Speckit constitution: `{self.speckit_constitution}`\n"
         md += f"2. Start spec-driven development: `/speckit.specify \"your feature description\"`\n"
         md += f"3. Archived brownfield artifacts: `.specify/memory/brownfield-archive/`\n"

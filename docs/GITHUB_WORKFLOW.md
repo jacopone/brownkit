@@ -8,7 +8,7 @@ lifecycle: persistent
 
 # GitHub Workflow & Release Management Guide
 
-Comprehensive guide for managing Brownfield-Kit development using GitHub features and industry best practices.
+Comprehensive guide for managing BrownKit development using GitHub features and industry best practices.
 
 ---
 
@@ -31,7 +31,7 @@ Comprehensive guide for managing Brownfield-Kit development using GitHub feature
 
 ### Version Format: `MAJOR.MINOR.PATCH`
 
-Brownfield-Kit follows [Semantic Versioning 2.0.0](https://semver.org/):
+BrownKit follows [Semantic Versioning 2.0.0](https://semver.org/):
 
 #### MAJOR version (X.0.0)
 Increment when making **incompatible API changes**:
@@ -365,7 +365,7 @@ What actually happens
 **Environment**
 - OS: Ubuntu 22.04
 - Python: 3.11
-- Brownfield-Kit: 0.1.0
+- BrownKit: 0.1.0
 
 **Additional Context**
 Screenshots, logs, etc.
@@ -563,7 +563,7 @@ echo "0.2.0" > VERSION
 # version = "0.2.0"
 
 # Update version in src/brownfield/cli/commands.py
-# @click.version_option(version="0.2.0", prog_name="brownfield-kit")
+# @click.version_option(version="0.2.0", prog_name="brownkit")
 ```
 
 #### 3. Update CHANGELOG.md
@@ -644,7 +644,7 @@ git push origin develop
 Go to GitHub → Releases → Draft a new release:
 
 **Tag**: v0.2.0
-**Title**: Brownfield-Kit v0.2.0 - TypeScript Support & Performance
+**Title**: BrownKit v0.2.0 - TypeScript Support & Performance
 **Description**:
 ```markdown
 ## 🎉 What's New in v0.2.0
@@ -666,12 +666,12 @@ Go to GitHub → Releases → Draft a new release:
 ### 📦 Installation
 
 ```bash
-pip install brownfield-kit==0.2.0
+pip install brownkit==0.2.0
 ```
 
 ### 🔗 Links
-- [Full Changelog](https://github.com/brownfield-kit/brownfield-kit/blob/main/CHANGELOG.md)
-- [Documentation](https://brownfield-kit.readthedocs.io)
+- [Full Changelog](https://github.com/brownkit/brownkit/blob/main/CHANGELOG.md)
+- [Documentation](https://brownkit.readthedocs.io)
 
 ### 🙏 Contributors
 Thank you to all contributors who made this release possible!
@@ -840,7 +840,7 @@ jobs:
 Create `ROADMAP.md`:
 
 ```markdown
-# Brownfield-Kit Roadmap
+# BrownKit Roadmap
 
 ## v0.2.0 (Q4 2025)
 - [ ] TypeScript plugin
@@ -891,7 +891,7 @@ Create `SECURITY.md`:
 | 0.1.x   | ✅        |
 
 ## Reporting a Vulnerability
-Email security@brownfield-kit.dev
+Email security@brownkit.dev
 ```
 
 ---
@@ -933,4 +933,4 @@ gh release create v0.2.0 --generate-notes
 ---
 
 **Last Updated**: 2025-10-21
-**Maintainer**: Brownfield-Kit Team
+**Maintainer**: BrownKit Team

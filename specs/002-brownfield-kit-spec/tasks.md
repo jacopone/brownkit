@@ -1,10 +1,10 @@
 ---
-description: "Implementation tasks for Brownfield-Kit Spec-Kit Plugin"
+description: "Implementation tasks for BrownKit Spec-Kit Plugin"
 ---
 
-# Tasks: Brownfield-Kit - Spec-Kit Plugin for Legacy Code Remediation
+# Tasks: BrownKit - Spec-Kit Plugin for Legacy Code Remediation
 
-**Input**: Design documents from `/specs/002-brownfield-kit-spec/`
+**Input**: Design documents from `/specs/002-brownkit-spec/`
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md
 
 **Tests**: Not explicitly requested in spec - no test tasks generated
@@ -27,7 +27,7 @@ description: "Implementation tasks for Brownfield-Kit Spec-Kit Plugin"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Initialize Brownfield-Kit project structure and foundational utilities
+**Purpose**: Initialize BrownKit project structure and foundational utilities
 
 - [X] T001 Create project directory structure (templates/, .specify/, src/, tests/)
 - [X] T002 [P] Create Python package setup in `pyproject.toml` with click dependency
@@ -57,9 +57,9 @@ description: "Implementation tasks for Brownfield-Kit Spec-Kit Plugin"
 
 ---
 
-## Phase 3: User Story 1 - Install Brownfield-Kit (Priority: P0) 🎯 MVP
+## Phase 3: User Story 1 - Install BrownKit (Priority: P0) 🎯 MVP
 
-**Goal**: Enable developers to install Brownfield-Kit into existing Spec-Kit projects without conflicts
+**Goal**: Enable developers to install BrownKit into existing Spec-Kit projects without conflicts
 
 **Independent Test**: Run `brownfield init` in Spec-Kit project, verify .specify/brownfield/ created and no file overwrites
 
@@ -241,7 +241,7 @@ description: "Implementation tasks for Brownfield-Kit Spec-Kit Plugin"
 - [ ] T099 Create `.gitignore` with /tmp/, *.pyc, __pycache__, .venv patterns
 - [ ] T100 Final review: Ensure no Spec-Kit file overwrites, test all slash commands work independently
 
-**Checkpoint**: Brownfield-Kit repository is complete, documented, and ready for release
+**Checkpoint**: BrownKit repository is complete, documented, and ready for release
 
 ---
 

@@ -1,6 +1,6 @@
-# Research Document: Brownfield-Kit Implementation
+# Research Document: BrownKit Implementation
 
-**Feature**: Brownfield-Kit Implementation
+**Feature**: BrownKit Implementation
 **Created**: 2025-10-12
 **Status**: Complete
 
@@ -8,7 +8,7 @@
 
 ### Python 3.11+ as Foundation
 
-**Decision**: Use Python 3.11+ as the implementation language for Brownfield-Kit.
+**Decision**: Use Python 3.11+ as the implementation language for BrownKit.
 
 **Rationale**:
 - Native support for type hints and pattern matching improves code clarity
@@ -44,7 +44,7 @@
 ```python
 @click.group()
 def brownfield():
-    """Brownfield-Kit: AI-driven codebase transition workflow."""
+    """BrownKit: AI-driven codebase transition workflow."""
     pass
 
 @brownfield.command('assess')

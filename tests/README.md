@@ -6,9 +6,9 @@ type: guide
 lifecycle: persistent
 ---
 
-# Brownfield-Kit Test Suite
+# BrownKit Test Suite
 
-Comprehensive test suite for Brownfield-Kit with unit, contract, and integration tests.
+Comprehensive test suite for BrownKit with unit, contract, and integration tests.
 
 ## Test Structure
 
@@ -521,9 +521,9 @@ def test_language_extensions(language, expected):
 - [Pytest Documentation](https://docs.pytest.org/)
 - [Testing Best Practices](https://docs.python-guide.org/writing/tests/)
 - [Coverage.py Documentation](https://coverage.readthedocs.io/)
-- [Brownfield-Kit Contributing Guide](../CONTRIBUTING.md)
+- [BrownKit Contributing Guide](../CONTRIBUTING.md)
 
 ---
 
 **Last Updated**: 2025-10-21
-**Maintainer**: Brownfield-Kit Team
+**Maintainer**: BrownKit Team
