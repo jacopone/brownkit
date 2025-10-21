@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownfield-kit.dev/schemas/project.json",
+  "title": "BrownfieldProject",
+  "description": "Metadata for a project undergoing brownfield transformation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_name",
+    "project_root",
+    "created_at",
+    "updated_at",
+    "current_phase"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Data model version (MAJOR.MINOR)"
+    },
+    "project_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project directory name"
+    },
+    "project_root": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Absolute path to project directory"
+    },
+    "detected_language": {
+      "type": "string",
+      "enum": ["python", "javascript", "rust", "go", "unknown"],
+      "description": "Primary programming language"
+    },
+    "detected_framework": {
+      "type": ["string", "null"],
+      "description": "Framework if detected (e.g., flask, express, actix, gin)"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when assessment started"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    "current_phase": {
+      "type": "string",
+      "enum": [
+        "uninitialized",
+        "assessment",
+        "structure",
+        "testing",
+        "quality",
+        "validation",
+        "graduated",
+        "failed"
+      ],
+      "description": "Current workflow phase"
+    },
+    "git_info": {
+      "type": "object",
+      "required": ["is_repo"],
+      "properties": {
+        "is_repo": {
+          "type": "boolean",
+          "description": "Whether project is a git repository"
+        },
+        "current_branch": {
+          "type": "string",
+          "description": "Current git branch name"
+        },
+        "has_uncommitted": {
+          "type": "boolean",
+          "description": "Whether there are uncommitted changes"
+        },
+        "remote_url": {
+          "type": ["string", "null"],
+          "description": "Remote repository URL"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+# Brownfield-Kit Configuration
+# This file defines quality gate thresholds and tool preferences
+# Generated on: {{DATE}}
+
+quality_gates:
+  cyclomatic_complexity:
+    threshold: 10
+    enabled: true
+    description: "Maximum cyclomatic complexity per function"
+
+  test_coverage:
+    threshold: 80
+    enabled: true
+    description: "Minimum test coverage percentage"
+
+  security:
+    block_on_critical: true
+    block_on_high: false
+    description: "Security vulnerability blocking policy"
+
+phases:
+  structure:
+    enabled: true
+    auto_approve: false
+    backup_before: true
+
+  testing:
+    enabled: true
+    framework: "auto"  # auto-detect or specify: pytest, jest, cargo test
+    coverage_target: 80
+    generate_tests: true
+
+  quality:
+    enabled: true
+    install_precommit: true
+    linters: []  # Will be populated based on detected language
+    formatters: []  # Will be populated based on detected language
+
+git:
+  auto_commit: false
+  commit_prefix: "[brownfield]"
+  verify_build_before_commit: true
+  auto_revert_on_failure: true
+
+tools:
+  python:
+    complexity: "lizard"
+    security: "bandit"
+    test_runner: "pytest"
+    linter: "ruff"
+    formatter: "black"
+
+exclude_patterns:
+  - "*.pyc"
+  - "__pycache__"
+  - ".git"
+  - ".venv"
+  - "venv"
+  - "node_modules"
+  - "vendor"
+  - "target"
+  - "dist"
+  - "build"
+  - "*.egg-info"

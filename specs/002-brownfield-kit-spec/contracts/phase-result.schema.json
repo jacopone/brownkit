@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownfield-kit.dev/schemas/phase-result.json",
+  "title": "PhaseResult",
+  "description": "Results and audit trail for a workflow phase",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "started_at",
+    "operations",
+    "errors",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["assessment", "structure", "testing", "quality", "validation"],
+      "description": "Workflow phase name"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed", "in_progress", "interrupted"],
+      "description": "Phase execution status"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["operation", "status"],
+        "properties": {
+          "operation": {
+            "type": "string",
+            "description": "Operation type (e.g., create_directory, move_files)"
+          },
+          "target": {
+            "type": "string",
+            "description": "Target path or identifier"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source path or identifier"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["success", "failed", "skipped"]
+          },
+          "commit": {
+            "type": "string",
+            "description": "Git commit SHA if committed"
+          },
+          "files_moved": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "files_modified": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "command": {
+            "type": "string",
+            "description": "Command executed"
+          },
+          "exit_code": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "metrics_before": {
+      "type": "object",
+      "description": "Metrics snapshot before phase",
+      "additionalProperties": true
+    },
+    "metrics_after": {
+      "type": "object",
+      "description": "Metrics snapshot after phase",
+      "additionalProperties": true
+    },
+    "git_commits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sha", "message", "timestamp"],
+        "properties": {
+          "sha": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{7,40}$"
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["message"],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "error"]
+          },
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["message"],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["warning", "info"]
+          },
+          "file": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownfield-kit.dev/schemas/checkpoint.json",
+  "title": "Checkpoint",
+  "description": "Recovery checkpoint for interrupted phases",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "started_at",
+    "last_checkpoint",
+    "tasks",
+    "progress"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["structure", "testing", "quality", "validation"],
+      "description": "Phase that was interrupted"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["interrupted", "completed", "failed"],
+      "description": "Checkpoint status"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When phase started"
+    },
+    "last_checkpoint": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last checkpoint timestamp"
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z_]+$",
+            "description": "Unique task identifier"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["completed", "in_progress", "pending", "failed"]
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "required": ["completed", "in_progress", "pending", "total", "percent"],
+      "properties": {
+        "completed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "in_progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Should be 0 or 1"
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "recovery_data": {
+      "type": "object",
+      "description": "Phase-specific recovery information",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownfield-kit.dev/schemas/metrics.json",
+  "title": "Metrics",
+  "description": "Code quality metrics snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "timestamp",
+    "phase",
+    "confidence",
+    "codebase",
+    "complexity",
+    "testing",
+    "security",
+    "structure"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["baseline", "structure", "testing", "quality", "validation"],
+      "description": "When metrics were collected"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Confidence level (low for sampled/estimated metrics)"
+    },
+    "codebase": {
+      "type": "object",
+      "required": ["total_files", "total_lines", "source_lines", "languages"],
+      "properties": {
+        "total_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "comment_lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blank_lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "languages": {
+          "type": "object",
+          "description": "Lines of code per language",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "complexity": {
+      "type": "object",
+      "required": [
+        "avg_cyclomatic",
+        "max_cyclomatic",
+        "functions_over_threshold",
+        "threshold",
+        "files_analyzed"
+      ],
+      "properties": {
+        "avg_cyclomatic": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average cyclomatic complexity"
+        },
+        "max_cyclomatic": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum cyclomatic complexity found"
+        },
+        "functions_over_threshold": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of functions exceeding threshold"
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Complexity threshold used"
+        },
+        "files_analyzed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "required": [
+        "has_test_framework",
+        "test_files",
+        "total_tests",
+        "coverage_percent",
+        "coverage_available"
+      ],
+      "properties": {
+        "has_test_framework": {
+          "type": "boolean"
+        },
+        "test_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "coverage_available": {
+          "type": "boolean"
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "required": ["vulnerabilities", "total_issues", "scan_completed"],
+      "properties": {
+        "vulnerabilities": {
+          "type": "object",
+          "required": ["high", "medium", "low"],
+          "properties": {
+            "high": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "medium": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "low": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "total_issues": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool": {
+          "type": "string",
+          "description": "Security scanning tool used"
+        },
+        "scan_completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "structure": {
+      "type": "object",
+      "required": [
+        "has_src_dir",
+        "has_tests_dir",
+        "has_docs_dir",
+        "files_in_root",
+        "max_depth",
+        "follows_conventions"
+      ],
+      "properties": {
+        "has_src_dir": {
+          "type": "boolean"
+        },
+        "has_tests_dir": {
+          "type": "boolean"
+        },
+        "has_docs_dir": {
+          "type": "boolean"
+        },
+        "files_in_root": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of source files in project root"
+        },
+        "max_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum directory depth"
+        },
+        "follows_conventions": {
+          "type": "boolean",
+          "description": "Whether structure follows language conventions"
+        }
+      }
+    }
+  }
+}
