@@ -170,11 +170,27 @@ class CheckpointManager:
         return {
             "phase": checkpoint.phase.value,
             "completed_tasks": [
-                {"id": t.task_id, "description": t.description, "status": t.status}
+                {
+                    "id": t.task_id,
+                    "description": t.description,
+                    "phase": t.phase.value,
+                    "estimated_minutes": t.estimated_minutes,
+                    "completed": t.completed,
+                    "status": t.status,
+                    "error_message": t.error_message,
+                }
                 for t in checkpoint.completed_tasks
             ],
             "pending_tasks": [
-                {"id": t.task_id, "description": t.description, "status": t.status}
+                {
+                    "id": t.task_id,
+                    "description": t.description,
+                    "phase": t.phase.value,
+                    "estimated_minutes": t.estimated_minutes,
+                    "completed": t.completed,
+                    "status": t.status,
+                    "error_message": t.error_message,
+                }
                 for t in checkpoint.pending_tasks
             ],
             "timestamp": checkpoint.timestamp.isoformat(),
@@ -190,7 +206,11 @@ class CheckpointManager:
                 Task(
                     task_id=t["id"],
                     description=t["description"],
-                    status=t["status"],
+                    phase=Phase(t["phase"]),
+                    estimated_minutes=t["estimated_minutes"],
+                    completed=t.get("completed", True),
+                    status=t.get("status", "completed"),
+                    error_message=t.get("error_message"),
                 )
                 for t in data["completed_tasks"]
             ],
@@ -198,7 +218,11 @@ class CheckpointManager:
                 Task(
                     task_id=t["id"],
                     description=t["description"],
-                    status=t["status"],
+                    phase=Phase(t["phase"]),
+                    estimated_minutes=t["estimated_minutes"],
+                    completed=t.get("completed", False),
+                    status=t.get("status", "pending"),
+                    error_message=t.get("error_message"),
                 )
                 for t in data["pending_tasks"]
             ],

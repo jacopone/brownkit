@@ -6,6 +6,7 @@ from typing import Optional
 
 from brownfield.exceptions import InvalidStateError, StateNotFoundError
 from brownfield.models.state import BrownfieldState, ReEntryEvent
+from brownfield.state.migrations.migrate_state_v1 import migrate_state_file
 
 
 class StateStore:
@@ -16,9 +17,21 @@ class StateStore:
         Initialize state store.
 
         Args:
-            state_path: Path to brownfield-state.json
+            state_path: Path to .specify/memory directory OR full path to state.json
+                       (for backward compatibility)
         """
-        self.state_path = state_path
+        # Handle both directory and file paths for backward compatibility
+        if state_path.is_dir() or not state_path.suffix:
+            # Given a directory, use state.json as filename
+            memory_dir = state_path
+            self.state_path = memory_dir / "state.json"
+        else:
+            # Given a full file path (backward compatibility)
+            self.state_path = state_path
+            memory_dir = state_path.parent
+
+        # Auto-migrate old brownfield-state.json to state.json
+        migrate_state_file(memory_dir)
 
     def load(self) -> BrownfieldState:
         """Load state from file.

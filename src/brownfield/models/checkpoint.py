@@ -9,13 +9,25 @@ from brownfield.models.state import Phase
 
 @dataclass
 class Task:
-    """Individual task within a phase."""
+    """Individual task within a phase.
 
-    task_id: str
-    description: str
-    completed: bool
-    completed_at: Optional[datetime] = None
-    git_commit_sha: Optional[str] = None
+    Unified task model for both orchestrator execution and checkpoint persistence.
+    """
+
+    task_id: str  # Unique identifier (e.g., "install_pytest")
+    description: str  # Human-readable description
+    phase: Phase  # STRUCTURE, TESTING, or QUALITY
+    estimated_minutes: int  # Time estimate for planning
+    completed: bool = False  # Completion status
+    completed_at: Optional[datetime] = None  # When task completed
+    git_commit_sha: Optional[str] = None  # Git commit if task was committed
+    status: Optional[str] = None  # "pending", "in_progress", "completed", "failed"
+    error_message: Optional[str] = None  # Captured error if task failed
+
+    def __post_init__(self):
+        """Auto-set status from completed if not provided."""
+        if self.status is None:
+            self.status = "completed" if self.completed else "pending"
 
 
 @dataclass

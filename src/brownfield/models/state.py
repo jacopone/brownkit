@@ -39,11 +39,15 @@ class ReEntryEvent:
 class BrownfieldState:
     """Current state of brownfield transition workflow."""
 
-    schema_version: str
-    project_root: Path
-    current_phase: Phase
-    baseline_metrics: Metrics
-    current_metrics: Metrics
+    # Speckit compatibility fields
+    workflow: str = "brownfield"  # Workflow type discriminator
+    schema_version: str = "1.0"  # State schema version
+
+    # Core workflow fields
+    project_root: Path = None
+    current_phase: Phase = Phase.ASSESSMENT
+    baseline_metrics: Optional[Metrics] = None
+    current_metrics: Optional[Metrics] = None
     phase_timestamps: dict[str, datetime] = field(default_factory=dict)
     re_entry_events: list[ReEntryEvent] = field(default_factory=list)
     graduation_timestamp: Optional[datetime] = None
@@ -163,9 +167,20 @@ class BrownfieldState:
             re_entry_events.append(ReEntryEvent(**event_data))
         data["re_entry_events"] = re_entry_events
 
-        # Convert metrics dicts to Metrics objects
-        data["baseline_metrics"] = Metrics(**data["baseline_metrics"])
-        data["current_metrics"] = Metrics(**data["current_metrics"])
+        # Convert metrics dicts to Metrics objects (handle None values)
+        if data.get("baseline_metrics"):
+            data["baseline_metrics"] = Metrics(**data["baseline_metrics"])
+        else:
+            data["baseline_metrics"] = None
+
+        if data.get("current_metrics"):
+            data["current_metrics"] = Metrics(**data["current_metrics"])
+        else:
+            data["current_metrics"] = None
+
+        # Set defaults for new fields if not present (backward compatibility)
+        data.setdefault("workflow", "brownfield")
+        data.setdefault("schema_version", "1.0")
 
         return cls(**data)
 

@@ -6,6 +6,11 @@ from brownfield.cli.assess import assess
 from brownfield.cli.graduate import graduate
 from brownfield.cli.quality import quality
 from brownfield.cli.resume import resume
+from brownfield.cli.slash.assess import assess_workflow
+from brownfield.cli.slash.graduate import graduate_workflow
+from brownfield.cli.slash.plan import plan_workflow
+from brownfield.cli.slash.remediate import remediate_workflow
+from brownfield.cli.slash.validate import validate_workflow
 from brownfield.cli.status import status
 from brownfield.cli.structure import structure
 from brownfield.cli.testing import testing
@@ -62,7 +67,7 @@ def install_completion(shell: str):
         sys.exit(1)
 
 
-# Register commands
+# Register granular commands (phase-specific)
 brownfield.add_command(assess)
 brownfield.add_command(structure)
 brownfield.add_command(testing)
@@ -71,6 +76,13 @@ brownfield.add_command(validate)
 brownfield.add_command(graduate)
 brownfield.add_command(resume)
 brownfield.add_command(status)
+
+# Register workflow commands (slash commands - orchestrator-based)
+brownfield.add_command(assess_workflow)
+brownfield.add_command(plan_workflow)
+brownfield.add_command(remediate_workflow)
+brownfield.add_command(validate_workflow)
+brownfield.add_command(graduate_workflow)
 
 
 if __name__ == "__main__":

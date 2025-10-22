@@ -60,3 +60,9 @@ brownfield-graduation-report.md
 # Temp files
 *.tmp
 *.bak
+
+# Devenv
+.devenv/
+.devenv-initialized
+.direnv/
+devenv.local.nix
