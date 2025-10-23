@@ -50,6 +50,7 @@ coverage.json
 
 # Brownfield-specific
 .specify/memory/brownfield-state.json
+.specify/memory/state.json
 .specify/memory/brownfield-checkpoint.json
 .specify/memory/assessment-report.md
 .specify/memory/brownfield-decisions.md
@@ -72,3 +73,10 @@ devenv.local.nix
 docs/_build/
 docs/_static/
 docs/_templates/
+
+# Auto-generated devenv file
+.devenv.flake.nix
+
+# UV lock file (not used)
+uv.lock
+.specify/memory/*.archived_*
