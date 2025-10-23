@@ -36,6 +36,7 @@ htmlcov/
 .tox/
 .nox/
 coverage.xml
+coverage.json
 *.cover
 .hypothesis/
 
@@ -66,3 +67,8 @@ brownfield-graduation-report.md
 .devenv-initialized
 .direnv/
 devenv.local.nix
+
+# Documentation
+docs/_build/
+docs/_static/
+docs/_templates/
