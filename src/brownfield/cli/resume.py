@@ -92,7 +92,7 @@ def resume(restart: bool):
     phase_name = target_checkpoint["phase"]
 
     from brownfield.models.state import Phase
-from brownfield.config import BrownfieldConfig
+    from brownfield.config import BrownfieldConfig
     phase = Phase(phase_name)
 
     console.print(f"\n[cyan]Resuming Phase:[/cyan] {phase.value}")

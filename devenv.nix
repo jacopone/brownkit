@@ -17,6 +17,10 @@
       pytest-mock>=3.12.0
       ruff>=0.1.0
       mypy>=1.8.0
+
+      # Documentation dependencies
+      sphinx>=7.0.0
+      sphinx_rtd_theme>=2.0.0
     '';
   };
 

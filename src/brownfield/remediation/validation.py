@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
-from brownfield.models.assessment import ProjectMetrics
+from brownfield.models.assessment import Metrics
 from brownfield.models.gate import ReadinessGate
 from brownfield.plugins.base import LanguageHandler
 
@@ -16,7 +16,7 @@ class ValidationRunner:
         self,
         project_root: Path,
         handler: LanguageHandler,
-        baseline_metrics: Optional[ProjectMetrics] = None,
+        baseline_metrics: Optional[Metrics] = None,
     ):
         self.project_root = project_root
         self.handler = handler

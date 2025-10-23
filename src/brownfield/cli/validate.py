@@ -114,7 +114,7 @@ def validate(gate: str, fail_fast: bool, report: str):
     # Update state if all gates passed
     if validation_result["all_passed"]:
         from brownfield.models.state import Phase
-from brownfield.config import BrownfieldConfig
+        from brownfield.config import BrownfieldConfig
 
         state.phase = Phase.GRADUATION
         state_store.save(state)
