@@ -7,6 +7,7 @@ import click
 from rich.console import Console
 from rich.table import Table
 
+from brownfield.config import BrownfieldConfig
 from brownfield.orchestrator.gate_validator import GateValidator
 from brownfield.plugins.registry import get_handler
 from brownfield.remediation.validation import ValidationRunner

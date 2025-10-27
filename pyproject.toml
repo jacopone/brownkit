@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "brownkit"
-version = "0.1.0"
+version = "0.2.1"
 description = "Spec-Kit plugin for legacy code remediation - bash-based quality assessment and planning"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -26,6 +26,8 @@ classifiers = [
 
 dependencies = [
     "click>=8.1.0",
+    "pyyaml>=6.0.1",
+    "jinja2>=3.1.2",
 ]
 
 [project.optional-dependencies]
@@ -100,3 +102,22 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"
+
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import click
 from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 
 from brownfield.assessment.language_detector import LanguageDetector
 from brownfield.assessment.metrics_collector import MetricsCollector
@@ -68,33 +69,67 @@ def assess(quick: bool, output: str, force: bool, language: str) -> None:
     start_time = time.time()
 
     try:
-        # Language detection
-        console.print("Language Detection:")
-        detector = LanguageDetector()
-        try:
-            lang_detection = detector.detect(project_root)
-            console.print(f"  Primary: {lang_detection.language} (confidence: {lang_detection.confidence.name})")
-            if lang_detection.version:
-                console.print(f"  Version: {lang_detection.version}")
-            if lang_detection.framework:
-                console.print(f"  Framework: {lang_detection.framework}")
-        except Exception as e:
-            raise LanguageDetectionError(str(e)) from e
+        # Use rich progress for visual feedback
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TaskProgressColumn(),
+            console=console,
+        ) as progress:
+            # Language detection
+            task1 = progress.add_task("Detecting language...", total=1)
+            detector = LanguageDetector()
+            try:
+                lang_detection = detector.detect(project_root)
+                progress.update(task1, completed=1)
+            except Exception as e:
+                progress.stop()
+                raise LanguageDetectionError(str(e)) from e
 
-        # Metrics collection
-        console.print("\nBaseline Metrics:")
-        collector = MetricsCollector()
-        mode = "quick" if quick else "full"
-        detected_language = language if language else lang_detection.language
-        metrics = collector.collect(project_root, detected_language, mode)
+            # Metrics collection
+            mode = "quick" if quick else "full"
+            detected_language = language if language else lang_detection.language
+            task2 = progress.add_task(f"Collecting metrics ({mode} mode)...", total=1)
+            collector = MetricsCollector()
+            metrics = collector.collect(project_root, detected_language, mode)
+            progress.update(task2, completed=1)
+
+            # Tech debt analysis
+            task3 = progress.add_task("Analyzing tech debt...", total=1)
+            analyzer = TechDebtAnalyzer()
+            tech_debt = analyzer.analyze(project_root)
+            progress.update(task3, completed=1)
+
+            # Generate report
+            task4 = progress.add_task("Generating report...", total=1)
+            duration = int(time.time() - start_time)
+            generator = ReportGenerator()
+            report = generator.generate(
+                project_name=project_root.name,
+                project_root=project_root,
+                language_detection=lang_detection,
+                baseline_metrics=metrics,
+                tech_debt=tech_debt,
+                analysis_mode=mode,
+                duration_seconds=duration,
+            )
+            progress.update(task4, completed=1)
+
+        # Display results
+        console.print("\n[bold cyan]Language Detection:[/bold cyan]")
+        console.print(f"  Primary: {lang_detection.language} (confidence: {lang_detection.confidence.name})")
+        if lang_detection.version:
+            console.print(f"  Version: {lang_detection.version}")
+        if lang_detection.framework:
+            console.print(f"  Framework: {lang_detection.framework}")
+
+        console.print("\n[bold cyan]Baseline Metrics:[/bold cyan]")
         console.print(f"  Test Coverage: {metrics.test_coverage:.1%}")
         console.print(f"  Avg Complexity: {metrics.complexity_avg:.1f}")
         console.print(f"  Critical Vulnerabilities: {metrics.critical_vulnerabilities}")
 
-        # Tech debt analysis
-        console.print("\nTech Debt Categories:")
-        analyzer = TechDebtAnalyzer()
-        tech_debt = analyzer.analyze(project_root)
+        console.print("\n[bold cyan]Tech Debt Categories:[/bold cyan]")
         if tech_debt:
             for debt in tech_debt:
                 severity_emoji = {
@@ -107,21 +142,11 @@ def assess(quick: bool, output: str, force: bool, language: str) -> None:
         else:
             console.print("  (No tech debt identified)")
 
-        # Generate report
-        duration = int(time.time() - start_time)
-        generator = ReportGenerator()
-        report = generator.generate(
-            project_name=project_root.name,
-            project_root=project_root,
-            language_detection=lang_detection,
-            baseline_metrics=metrics,
-            tech_debt=tech_debt,
-            analysis_mode=mode,
-            duration_seconds=duration,
-        )
-
         # Write report
+        # Resolve relative paths against project_root
         output_path = Path(output)
+        if not output_path.is_absolute():
+            output_path = project_root / output_path
         ReportWriter.write_assessment_report(report, output_path)
 
         # Check for existing state (re-entry scenario)

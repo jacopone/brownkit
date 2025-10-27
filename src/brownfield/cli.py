@@ -13,7 +13,7 @@ from brownfield.core.installer import install_brownfield_kit
 
 
 @click.group()
-@click.version_option(version="0.1.0")
+@click.version_option(version="0.2.1")
 def cli():
     """BrownKit: Spec-Kit plugin for legacy code remediation.
 

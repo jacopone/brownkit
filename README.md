@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Spec-Kit Compatible](https://img.shields.io/badge/Spec--Kit-Compatible-brightgreen.svg)](https://github.com/specify/speckit)
-[![Tests](https://img.shields.io/badge/tests-77%20passing-success.svg)](./tests)
+[![Tests](https://img.shields.io/badge/tests-54%20passing-success.svg)](./tests)
 
 ---
 
@@ -279,7 +279,8 @@ Spec-Kit can trace provenance and understand project evolution.
 - **Dual CLI Interface**: Granular commands + workflow orchestrators
 - **Phase Validation**: Strict transition rules prevent phase skipping
 - **Checkpoint Recovery**: Resume interrupted operations
-- **Progress Tracking**: Rich console displays with tables and trees
+- **Rich Progress Indicators**: Animated spinners and progress bars for long operations
+- **Progress Tracking**: Beautiful console displays with tables and trees
 - **State Persistence**: Atomic writes, auto-migration from v0.1.0
 
 ---
@@ -517,12 +518,13 @@ These principles guide BrownKit's automation and are embedded in the generated S
 
 **BrownKit v0.2.0** achieves production-ready quality standards:
 
-- ✅ **77 passing tests** (100% pass rate)
-- ✅ **19 unit tests** for checkpoint and task models
-- ✅ **41 unit tests** for phase validation and transitions
-- ✅ **11 unit tests** for state migration
-- ✅ **4 integration tests** for end-to-end workflow
-- ✅ **2 remediation tests** for orchestrator models
+- ✅ **54 integration tests** (100% pass rate)
+- ✅ **11 assessment workflow tests** for CLI and state management
+- ✅ **9 checkpoint recovery tests** for workflow interruption handling
+- ✅ **10 constitution generation tests** for Spec-Kit graduation
+- ✅ **11 full workflow tests** for end-to-end scenarios
+- ✅ **9 state migration tests** for v1.0 → v2.0 upgrade
+- ✅ **4 phase transition tests** for validation and re-entry
 - ✅ **All ruff checks passing** (no linting errors)
 - ✅ **Complexity <10** (enforced with lizard)
 

@@ -17,6 +17,78 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.1] - 2025-10-27
+
+### 🎨 Production Polish Release
+
+Enhanced user experience, fixed critical bugs, and added one-command installation matching Spec-Kit's workflow.
+
+### Added
+
+#### Installation & User Experience
+- **`brownfield install` command** - One-command installation of slash commands (matches `specify init` pattern)
+  - Automatically copies BrownKit slash commands to `.claude/commands/`
+  - Detects and prevents self-installation
+  - Shows clear success message with next steps
+  - Supports `--force` flag to overwrite existing commands
+- **Rich Progress Indicators** - Animated spinners and progress bars for long-running operations
+  - Progress bars in `assess` command (language detection, metrics collection, tech debt analysis, report generation)
+  - Progress bars in `testing` command (module identification, test generation, framework installation)
+  - Progress bars in `quality` command (linter setup, formatter setup, hooks installation)
+  - Professional visual feedback during all workflow phases
+
+#### Documentation
+- Updated README with accurate test counts (54 integration tests)
+- Added Rich Progress Indicators feature documentation
+- Updated test breakdown by category (assessment, checkpoint, constitution, migration, phase transitions)
+
+### Fixed
+
+#### Critical Bugs
+- **Assessment Report Path Resolution** (src/brownfield/cli/assess.py:126)
+  - Fixed relative path resolution bug causing reports to be written to wrong location
+  - Now correctly resolves relative paths against project_root
+  - Assessment reports now reliably created at `<project>/.specify/memory/assessment-report.md`
+- **Missing Import in Validate Command** (src/brownfield/cli/validate.py:10)
+  - Added missing `BrownfieldConfig` import
+  - Fixed `UnboundLocalError` when running `brownfield validate`
+
+### Changed
+
+#### Version Updates
+- Updated version to 0.2.1 in:
+  - `pyproject.toml`
+  - `src/brownfield/__init__.py`
+  - `src/brownfield/cli/commands.py`
+  - `src/brownfield/cli.py`
+- Updated NixOS package definition (`nixos-config/pkgs/brownkit.nix`):
+  - Version: 0.1.0 → 0.2.1
+  - Added missing dependencies: `pyyaml`, `jinja2`, `rich`
+
+### Testing
+
+- ✅ **54/54 integration tests passing** (100% pass rate)
+  - 11 assessment workflow tests
+  - 9 checkpoint recovery tests
+  - 10 constitution generation tests
+  - 11 full workflow tests
+  - 9 state migration tests
+  - 4 phase transition tests
+- All ruff checks passing
+- Complexity <10 enforced
+
+### Migration Notes
+
+No breaking changes. Projects using v0.2.0 will work without modification.
+
+To install BrownKit slash commands in existing projects:
+```bash
+cd /path/to/your/project
+brownfield install
+```
+
+---
+
 ## [0.1.0] - 2025-10-21
 
 ### 🎉 Initial Release - MVP+

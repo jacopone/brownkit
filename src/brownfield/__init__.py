@@ -6,6 +6,6 @@ technical debt in brownfield codebases before transitioning to
 AI-driven feature development with Spec-Kit.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.1"
 __author__ = "BrownKit Contributors"
 __license__ = "MIT"

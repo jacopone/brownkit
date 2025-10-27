@@ -5,6 +5,7 @@ from pathlib import Path
 
 import click
 from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 from rich.table import Table
 
 from brownfield.assessment.language_detector import LanguageDetector
@@ -87,26 +88,33 @@ def quality(
         handler = get_handler(lang_detection.language)
         installer = QualityGatesInstaller(handler, project_root)
 
-        # Install quality gates
-        console.print("\n[bold]Installing Quality Tools...[/bold]")
+        # Install quality gates with progress indicators
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TaskProgressColumn(),
+            console=console,
+        ) as progress:
+            if not skip_linter:
+                task1 = progress.add_task("Creating linter configuration...", total=1)
+                installer.create_linter_config()
+                progress.update(task1, completed=1)
 
-        if not skip_linter:
-            console.print("  Creating linter configuration...")
-            installer.create_linter_config()
-            console.print("  [green]✓[/green] .pylintrc created")
+            if not skip_formatter:
+                task2 = progress.add_task("Creating formatter configuration...", total=1)
+                installer.create_formatter_config()
+                progress.update(task2, completed=1)
 
-        if not skip_formatter:
-            console.print("  Creating formatter configuration...")
-            installer.create_formatter_config()
-            console.print("  [green]✓[/green] Black config added to pyproject.toml")
+            if not skip_hooks:
+                task3 = progress.add_task("Installing pre-commit hooks...", total=1)
+                hooks = installer.install_pre_commit_hooks()
+                progress.update(task3, completed=1)
 
-        if not skip_hooks:
-            console.print("  Installing pre-commit hooks...")
-            hooks = installer.install_pre_commit_hooks()
-            console.print(f"  [green]✓[/green] {len(hooks)} hooks installed")
-
-        # Run full installation via handler
-        result = handler.install_quality_gates(project_root, complexity_threshold)
+            # Run full installation via handler
+            task4 = progress.add_task("Running quality gates installation...", total=1)
+            result = handler.install_quality_gates(project_root, complexity_threshold)
+            progress.update(task4, completed=1)
 
         # Display results
         console.print("\n[bold]Quality Analysis Results:[/bold]")
