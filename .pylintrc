@@ -1,0 +1,36 @@
+[MASTER]
+jobs=0
+persistent=yes
+suggestion-mode=yes
+
+[MESSAGES CONTROL]
+disable=
+    C0111,  # missing-docstring
+    R0903,  # too-few-public-methods
+    C0103,  # invalid-name (for short variables)
+    R0913,  # too-many-arguments
+    R0914,  # too-many-locals
+
+[FORMAT]
+max-line-length=100
+indent-string='    '
+
+[BASIC]
+good-names=i,j,k,ex,e,f,db,id,_,fd,qa
+
+[DESIGN]
+max-args=7
+max-attributes=10
+max-branches=15
+max-locals=20
+max-parents=7
+max-public-methods=25
+max-returns=6
+max-statements=60
+min-public-methods=1
+
+[IMPORTS]
+allow-wildcard-with-all=no
+
+[EXCEPTIONS]
+overgeneral-exceptions=builtins.Exception

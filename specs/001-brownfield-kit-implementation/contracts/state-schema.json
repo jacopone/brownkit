@@ -1,0 +1,445 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownkit.org/schemas/state-schema.json",
+  "title": "Brownfield State Schema",
+  "description": "JSON Schema for brownfield-state.json tracking workflow progression",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_root",
+    "current_phase",
+    "baseline_metrics",
+    "current_metrics",
+    "phase_timestamps",
+    "graduated"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Schema version for backward compatibility",
+      "example": "1.0"
+    },
+    "project_root": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "Absolute path to project root directory",
+      "example": "/home/user/my-project"
+    },
+    "current_phase": {
+      "type": "string",
+      "enum": [
+        "assessment",
+        "structure",
+        "testing",
+        "quality",
+        "validation",
+        "graduated"
+      ],
+      "description": "Current workflow phase"
+    },
+    "baseline_metrics": {
+      "$ref": "#/definitions/Metrics",
+      "description": "Initial metrics captured during assessment"
+    },
+    "current_metrics": {
+      "$ref": "#/definitions/Metrics",
+      "description": "Most recent metrics after latest phase"
+    },
+    "phase_timestamps": {
+      "type": "object",
+      "description": "ISO 8601 timestamps for phase transitions",
+      "propertyNames": {
+        "pattern": "^(assessment|structure_start|structure_complete|testing_start|testing_complete|quality_start|quality_complete|validation|graduation)$"
+      },
+      "patternProperties": {
+        "^.*$": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "example": {
+        "assessment": "2025-10-12T14:00:00Z",
+        "structure_start": "2025-10-12T14:30:00Z",
+        "structure_complete": "2025-10-12T15:00:00Z"
+      }
+    },
+    "phase_checkpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PhaseCheckpoint"
+      },
+      "description": "Historical checkpoints for interruption recovery"
+    },
+    "re_entry_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ReEntryEvent"
+      },
+      "description": "Quality regression events triggering workflow re-entry"
+    },
+    "graduation_timestamp": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when project graduated to Speckit"
+    },
+    "graduated": {
+      "type": "boolean",
+      "description": "Whether project has completed brownfield workflow"
+    },
+    "ai_agent_version": {
+      "type": "string",
+      "description": "Version of BrownKit that created this state",
+      "example": "0.1.0"
+    }
+  },
+  "definitions": {
+    "Metrics": {
+      "type": "object",
+      "required": [
+        "test_coverage",
+        "complexity_avg",
+        "complexity_max",
+        "critical_vulnerabilities",
+        "high_vulnerabilities",
+        "medium_vulnerabilities",
+        "build_status",
+        "total_loc"
+      ],
+      "properties": {
+        "test_coverage": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Test coverage as decimal (0.0 = 0%, 1.0 = 100%)",
+          "example": 0.65
+        },
+        "complexity_avg": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average cyclomatic complexity across codebase",
+          "example": 8.4
+        },
+        "complexity_max": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum cyclomatic complexity in any function",
+          "example": 15
+        },
+        "critical_vulnerabilities": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of critical security vulnerabilities",
+          "example": 0
+        },
+        "high_vulnerabilities": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of high-severity security vulnerabilities",
+          "example": 2
+        },
+        "medium_vulnerabilities": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of medium-severity security vulnerabilities",
+          "example": 5
+        },
+        "build_status": {
+          "type": "string",
+          "enum": ["passing", "failing", "unknown"],
+          "description": "Current build status"
+        },
+        "documentation_coverage": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Percentage of public APIs with documentation",
+          "example": 0.92
+        },
+        "total_loc": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total lines of code (excluding comments)",
+          "example": 8543
+        },
+        "test_loc": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Lines of test code",
+          "example": 1234
+        },
+        "git_commits": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total git commits in repository",
+          "example": 156
+        },
+        "git_secrets_found": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Secrets/credentials detected by scanner",
+          "example": 0
+        }
+      }
+    },
+    "PhaseCheckpoint": {
+      "type": "object",
+      "required": [
+        "phase",
+        "started_at",
+        "last_checkpoint_at",
+        "tasks",
+        "interrupted"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "enum": ["structure", "testing", "quality", "validation"],
+          "description": "Phase this checkpoint belongs to"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When phase execution started"
+        },
+        "last_checkpoint_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Most recent checkpoint update timestamp"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Task"
+          },
+          "description": "All tasks in this phase"
+        },
+        "interrupted": {
+          "type": "boolean",
+          "description": "Whether execution was interrupted (Ctrl+C, crash)"
+        }
+      }
+    },
+    "Task": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "description",
+        "completed"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^[a-z_]+$",
+          "description": "Unique task identifier (snake_case)",
+          "example": "move_main_py"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable task description",
+          "example": "Move main.py to src/"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether task has been completed"
+        },
+        "completed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When task was completed (null if not completed)"
+        },
+        "git_commit_sha": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{40}$",
+          "description": "Git commit SHA created by this task (null if not completed)",
+          "example": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0"
+        }
+      }
+    },
+    "ReEntryEvent": {
+      "type": "object",
+      "required": [
+        "detected_at",
+        "trigger",
+        "baseline_value",
+        "current_value",
+        "threshold_breached",
+        "re_entry_phase"
+      ],
+      "properties": {
+        "detected_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When regression was detected"
+        },
+        "trigger": {
+          "type": "string",
+          "enum": [
+            "coverage_drop",
+            "complexity_increase",
+            "security_breach",
+            "build_failure"
+          ],
+          "description": "What caused re-entry"
+        },
+        "baseline_value": {
+          "type": "number",
+          "description": "Original metric value at graduation"
+        },
+        "current_value": {
+          "type": "number",
+          "description": "Current metric value triggering re-entry"
+        },
+        "threshold_breached": {
+          "type": "number",
+          "description": "Threshold that was breached"
+        },
+        "re_entry_phase": {
+          "type": "string",
+          "enum": ["structure", "testing", "quality", "validation"],
+          "description": "Phase to re-enter for remediation"
+        },
+        "resolved": {
+          "type": "boolean",
+          "description": "Whether regression has been resolved",
+          "default": false
+        },
+        "resolved_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When regression was resolved"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0",
+      "project_root": "/home/user/my-project",
+      "current_phase": "testing",
+      "baseline_metrics": {
+        "test_coverage": 0.0,
+        "complexity_avg": 15.2,
+        "complexity_max": 34,
+        "critical_vulnerabilities": 2,
+        "high_vulnerabilities": 5,
+        "medium_vulnerabilities": 8,
+        "build_status": "unknown",
+        "documentation_coverage": 0.45,
+        "total_loc": 8543,
+        "test_loc": 0,
+        "git_commits": 156,
+        "git_secrets_found": 0
+      },
+      "current_metrics": {
+        "test_coverage": 0.45,
+        "complexity_avg": 12.1,
+        "complexity_max": 20,
+        "critical_vulnerabilities": 1,
+        "high_vulnerabilities": 4,
+        "medium_vulnerabilities": 7,
+        "build_status": "passing",
+        "documentation_coverage": 0.45,
+        "total_loc": 8543,
+        "test_loc": 567,
+        "git_commits": 168,
+        "git_secrets_found": 0
+      },
+      "phase_timestamps": {
+        "assessment": "2025-10-12T14:00:00Z",
+        "structure_start": "2025-10-12T14:30:00Z",
+        "structure_complete": "2025-10-12T15:00:00Z",
+        "testing_start": "2025-10-12T15:15:00Z"
+      },
+      "phase_checkpoints": [
+        {
+          "phase": "structure",
+          "started_at": "2025-10-12T14:30:00Z",
+          "last_checkpoint_at": "2025-10-12T14:55:00Z",
+          "tasks": [
+            {
+              "task_id": "create_src_dir",
+              "description": "Create src/ directory",
+              "completed": true,
+              "completed_at": "2025-10-12T14:32:00Z",
+              "git_commit_sha": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0"
+            },
+            {
+              "task_id": "move_main_py",
+              "description": "Move main.py to src/",
+              "completed": true,
+              "completed_at": "2025-10-12T14:35:00Z",
+              "git_commit_sha": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1"
+            }
+          ],
+          "interrupted": false
+        }
+      ],
+      "re_entry_events": [],
+      "graduation_timestamp": null,
+      "graduated": false,
+      "ai_agent_version": "0.1.0"
+    },
+    {
+      "schema_version": "1.0",
+      "project_root": "/home/user/graduated-project",
+      "current_phase": "graduated",
+      "baseline_metrics": {
+        "test_coverage": 0.0,
+        "complexity_avg": 18.5,
+        "complexity_max": 42,
+        "critical_vulnerabilities": 3,
+        "high_vulnerabilities": 7,
+        "medium_vulnerabilities": 12,
+        "build_status": "failing",
+        "documentation_coverage": 0.32,
+        "total_loc": 12456,
+        "test_loc": 0,
+        "git_commits": 234,
+        "git_secrets_found": 1
+      },
+      "current_metrics": {
+        "test_coverage": 0.68,
+        "complexity_avg": 7.8,
+        "complexity_max": 12,
+        "critical_vulnerabilities": 0,
+        "high_vulnerabilities": 1,
+        "medium_vulnerabilities": 3,
+        "build_status": "passing",
+        "documentation_coverage": 0.94,
+        "total_loc": 12456,
+        "test_loc": 3421,
+        "git_commits": 287,
+        "git_secrets_found": 0
+      },
+      "phase_timestamps": {
+        "assessment": "2025-10-08T10:00:00Z",
+        "structure_start": "2025-10-08T10:30:00Z",
+        "structure_complete": "2025-10-08T11:15:00Z",
+        "testing_start": "2025-10-08T11:30:00Z",
+        "testing_complete": "2025-10-08T13:45:00Z",
+        "quality_start": "2025-10-08T14:00:00Z",
+        "quality_complete": "2025-10-08T15:30:00Z",
+        "validation": "2025-10-08T15:45:00Z",
+        "graduation": "2025-10-08T16:00:00Z"
+      },
+      "phase_checkpoints": [],
+      "re_entry_events": [
+        {
+          "detected_at": "2025-10-10T09:00:00Z",
+          "trigger": "coverage_drop",
+          "baseline_value": 0.68,
+          "current_value": 0.43,
+          "threshold_breached": 0.5,
+          "re_entry_phase": "testing",
+          "resolved": true,
+          "resolved_at": "2025-10-10T11:30:00Z"
+        }
+      ],
+      "graduation_timestamp": "2025-10-08T16:00:00Z",
+      "graduated": true,
+      "ai_agent_version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "project_root": "/home/guyfawkes/brownfield",
+  "current_phase": "structure",
+  "baseline_metrics": {
+    "test_coverage": 0.0,
+    "complexity_avg": 3.727272727272727,
+    "complexity_max": 22,
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 0,
+    "medium_vulnerabilities": 0,
+    "build_status": "passing",
+    "documentation_coverage": 0.0,
+    "total_loc": 10185,
+    "test_loc": 0,
+    "git_commits": 1,
+    "git_secrets_found": 0,
+    "complexity_violations": [
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/quality.py",
+        "function": "quality(...)",
+        "complexity": 22,
+        "line": 46
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/structure.py",
+        "function": "structure(...)",
+        "complexity": 17,
+        "line": 37
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/testing.py",
+        "function": "testing(...)",
+        "complexity": 16,
+        "line": 42
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_measure_coverage(...)",
+        "complexity": 15,
+        "line": 140
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_detect_coverage_source(...)",
+        "complexity": 14,
+        "line": 235
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/models/assessment.py",
+        "function": "to_markdown(...)",
+        "complexity": 13,
+        "line": 86
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure.py",
+        "function": "generate_markdown_plan(...)",
+        "complexity": 12,
+        "line": 255
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure_verifier.py",
+        "function": "_check_stray_files(...)",
+        "complexity": 12,
+        "line": 277
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/plugins/python_handler.py",
+        "function": "install_quality_gates(...)",
+        "complexity": 12,
+        "line": 147
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_extract_complexity_violations(...)",
+        "complexity": 11,
+        "line": 298
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/quality.py",
+        "function": "analyze_complexity(...)",
+        "complexity": 11,
+        "line": 69
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure_verifier.py",
+        "function": "_verify_directory_structure(...)",
+        "complexity": 11,
+        "line": 102
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/testing.py",
+        "function": "_generate_smoke_test_content(...)",
+        "complexity": 11,
+        "line": 172
+      }
+    ]
+  },
+  "current_metrics": {
+    "test_coverage": 0.0,
+    "complexity_avg": 3.727272727272727,
+    "complexity_max": 22,
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 0,
+    "medium_vulnerabilities": 0,
+    "build_status": "passing",
+    "documentation_coverage": 0.0,
+    "total_loc": 10185,
+    "test_loc": 0,
+    "git_commits": 1,
+    "git_secrets_found": 0,
+    "complexity_violations": [
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/quality.py",
+        "function": "quality(...)",
+        "complexity": 22,
+        "line": 46
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/structure.py",
+        "function": "structure(...)",
+        "complexity": 17,
+        "line": 37
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/cli/testing.py",
+        "function": "testing(...)",
+        "complexity": 16,
+        "line": 42
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_measure_coverage(...)",
+        "complexity": 15,
+        "line": 140
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_detect_coverage_source(...)",
+        "complexity": 14,
+        "line": 235
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/models/assessment.py",
+        "function": "to_markdown(...)",
+        "complexity": 13,
+        "line": 86
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure.py",
+        "function": "generate_markdown_plan(...)",
+        "complexity": 12,
+        "line": 255
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure_verifier.py",
+        "function": "_check_stray_files(...)",
+        "complexity": 12,
+        "line": 277
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/plugins/python_handler.py",
+        "function": "install_quality_gates(...)",
+        "complexity": 12,
+        "line": 147
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/assessment/metrics_collector.py",
+        "function": "_extract_complexity_violations(...)",
+        "complexity": 11,
+        "line": 298
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/quality.py",
+        "function": "analyze_complexity(...)",
+        "complexity": 11,
+        "line": 69
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/structure_verifier.py",
+        "function": "_verify_directory_structure(...)",
+        "complexity": 11,
+        "line": 102
+      },
+      {
+        "file": "home/guyfawkes/brownfield/src/brownfield/remediation/testing.py",
+        "function": "_generate_smoke_test_content(...)",
+        "complexity": 11,
+        "line": 172
+      }
+    ]
+  },
+  "phase_timestamps": {
+    "assessment": "2025-10-18T23:18:52.891048"
+  },
+  "re_entry_events": [],
+  "graduation_timestamp": null,
+  "graduated": false,
+  "ai_agent_version": "0.1.0",
+  "workflow": "brownfield"
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://brownkit.dev/schemas/config.json",
+  "title": "Configuration",
+  "description": "User-defined settings for brownfield workflow",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "quality_gates",
+    "phases",
+    "git",
+    "exclude_patterns"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "quality_gates": {
+      "type": "object",
+      "required": [
+        "test_coverage_min",
+        "complexity_max",
+        "allow_high_vulnerabilities"
+      ],
+      "properties": {
+        "test_coverage_min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Minimum test coverage percentage"
+        },
+        "complexity_max": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Maximum cyclomatic complexity"
+        },
+        "allow_high_vulnerabilities": {
+          "type": "boolean",
+          "description": "Whether high severity vulnerabilities are allowed"
+        }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "properties": {
+        "structure": {
+          "type": "object",
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "auto_approve": {"type": "boolean"},
+            "backup_before": {"type": "boolean"}
+          }
+        },
+        "testing": {
+          "type": "object",
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "framework": {
+              "type": "string",
+              "description": "Test framework (auto, pytest, jest, cargo test)"
+            },
+            "coverage_target": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "generate_tests": {"type": "boolean"}
+          }
+        },
+        "quality": {
+          "type": "object",
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "install_precommit": {"type": "boolean"},
+            "linters": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "formatters": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "git": {
+      "type": "object",
+      "required": [
+        "auto_commit",
+        "commit_prefix",
+        "verify_build_before_commit",
+        "auto_revert_on_failure"
+      ],
+      "properties": {
+        "auto_commit": {
+          "type": "boolean",
+          "description": "Automatically create commits for changes"
+        },
+        "commit_prefix": {
+          "type": "string",
+          "description": "Prefix for commit messages"
+        },
+        "verify_build_before_commit": {
+          "type": "boolean",
+          "description": "Run build verification before committing"
+        },
+        "auto_revert_on_failure": {
+          "type": "boolean",
+          "description": "Automatically revert commits if build fails"
+        }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "description": "Tool preferences per language",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "complexity": {"type": "string"},
+          "security": {"type": "string"},
+          "test_runner": {"type": "string"}
+        }
+      }
+    },
+    "exclude_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Glob patterns for files/directories to ignore"
+    }
+  }
+}

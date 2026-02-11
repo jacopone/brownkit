@@ -1,0 +1,146 @@
+# Constitution Template for BrownKit Graduated Projects
+# This template is used to generate .specify/memory/constitution.md
+# after a project successfully graduates from the brownfield workflow.
+
+project_name: "{{ project_name }}"
+language: "{{ language }}"
+graduation_date: "{{ graduation_date }}"
+brownkit_version: "{{ brownkit_version }}"
+
+# Code Quality Gates (derived from graduation metrics)
+quality_standards:
+  complexity:
+    max_cyclomatic_complexity: {{ max_complexity }}
+    average_complexity_target: {{ avg_complexity }}
+    description: "Maintain code complexity below graduation thresholds to ensure maintainability"
+
+  test_coverage:
+    minimum_coverage: {{ min_coverage }}
+    target_coverage: {{ target_coverage }}
+    description: "Test coverage must remain above {{ min_coverage }}% (graduation baseline: {{ baseline_coverage }}%)"
+
+  code_quality:
+    critical_vulnerabilities: 0
+    high_vulnerabilities_max: {{ max_high_vulns }}
+    build_status: "passing"
+    description: "Zero critical vulnerabilities, build must pass on all commits"
+
+# Testing Requirements
+testing_standards:
+  required_test_types:
+    - "Unit tests for core business logic"
+    - "Integration tests for external dependencies"
+{% if language == "python" %}    - "Pytest with coverage reporting"
+{% elif language == "javascript" %}    - "Jest or Mocha with coverage reporting"
+{% elif language == "rust" %}    - "Cargo test with coverage via tarpaulin"
+{% elif language == "go" %}    - "Go test with coverage reporting"
+{% else %}    - "Test framework with coverage reporting"
+{% endif %}
+
+  test_execution:
+    frequency: "On every commit"
+    ci_integration: "Required"
+    failing_tests: "Block merge"
+
+# Documentation Standards
+documentation_standards:
+  minimum_coverage: {{ min_doc_coverage }}
+  required_sections:
+    - "README with setup instructions"
+    - "API documentation for public interfaces"
+{% if language == "python" %}    - "Docstrings for all public functions/classes"
+{% elif language == "javascript" %}    - "JSDoc comments for exported functions"
+{% elif language == "rust" %}    - "Rustdoc comments for public API"
+{% elif language == "go" %}    - "Go doc comments for exported symbols"
+{% else %}    - "Code documentation for public API"
+{% endif %}    - "CHANGELOG.md for version history"
+
+# Security Requirements
+security_standards:
+  vulnerability_scanning:
+    enabled: true
+    frequency: "Weekly"
+{% if language == "python" %}    tools: ["bandit", "safety"]
+{% elif language == "javascript" %}    tools: ["npm audit", "snyk"]
+{% elif language == "rust" %}    tools: ["cargo-audit"]
+{% elif language == "go" %}    tools: ["gosec", "nancy"]
+{% else %}    tools: ["security-scanner"]
+{% endif %}
+
+  secrets_management:
+    no_secrets_in_code: true
+    environment_variables: "Required for sensitive data"
+    secrets_scanner: "gitleaks or similar"
+
+# Build and CI Standards
+build_standards:
+  automated_build:
+    required: true
+    on_events: ["push", "pull_request"]
+
+  continuous_integration:
+    required: true
+    pipeline_steps:
+      - "Lint checks"
+      - "Unit tests"
+      - "Integration tests"
+      - "Security scans"
+      - "Build verification"
+
+  deployment:
+    requires_passing_tests: true
+    requires_code_review: true
+
+# Regression Detection Thresholds
+# These thresholds trigger workflow re-entry if violated
+regression_thresholds:
+  test_coverage_drop: {{ coverage_drop_threshold }}  # percentage points
+  complexity_increase: {{ complexity_increase_threshold }}  # percentage
+  new_critical_vulnerabilities: 0
+  build_failures: 0
+
+# Monitoring and Maintenance
+monitoring:
+  frequency: "{{ monitoring_frequency }}"
+  automated_checks: true
+  alert_on_threshold_breach: true
+
+  metrics_tracked:
+    - "Test coverage percentage"
+    - "Average cyclomatic complexity"
+    - "Build status"
+    - "Security vulnerabilities"
+    - "Documentation coverage"
+
+# BrownKit Metadata
+brownkit_metadata:
+  graduation_metrics:
+    test_coverage: {{ baseline_coverage }}
+    complexity_avg: {{ baseline_complexity }}
+    complexity_max: {{ baseline_max_complexity }}
+    total_loc: {{ total_loc }}
+    test_loc: {{ test_loc }}
+
+  workflow_history:
+    phases_completed:
+      - "ASSESSMENT"
+      - "PLANNING"
+      - "REMEDIATION"
+      - "VALIDATION"
+      - "GRADUATION"
+
+    graduation_timestamp: "{{ graduation_timestamp }}"
+    brownkit_version: "{{ brownkit_version }}"
+
+# Instructions for Spec-Kit Users
+speckit_integration:
+  next_steps:
+    - "Use /speckit.specify to begin spec-driven feature development"
+    - "All new features must maintain or improve quality metrics"
+    - "Monitor metrics using /brownkit.monitor"
+    - "If metrics degrade below thresholds, BrownKit will trigger re-entry workflow"
+
+  constitution_compliance:
+    description: "This constitution defines the quality baseline for this project"
+    enforcement: "Automated via BrownKit monitoring"
+    updates: "Constitution can be updated after major quality improvements"

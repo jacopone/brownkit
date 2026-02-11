@@ -1,0 +1,149 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brownkit"
+version = "0.3.0"
+description = "Spec-Kit plugin for legacy code remediation - bash-based quality assessment and planning"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "BrownKit Contributors"}
+]
+keywords = ["spec-kit", "brownfield", "legacy", "refactoring", "technical-debt", "code-quality"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Quality Assurance",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0.1",
+    "jinja2>=3.1.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "ruff>=0.1.0",
+    "black>=23.12.0",
+    "pylint>=3.0.0",
+    "mypy>=1.8.0",
+]
+
+[project.scripts]
+brownfield = "brownfield.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/brownkit/brownkit"
+Documentation = "https://brownkit.readthedocs.io"
+Repository = "https://github.com/brownkit/brownkit.git"
+"Bug Tracker" = "https://github.com/brownkit/brownkit/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "S", "B", "A", "C4", "DTZ", "ICN", "PIE", "PT", "RSE", "RET", "SIM", "TID", "ARG", "PLE", "PLW"]
+ignore = [
+    "S101",    # Allow assert statements in tests
+    "DTZ003",  # datetime.utcnow() used throughout codebase
+    "DTZ005",  # datetime.now() without tzinfo
+    "S108",    # Hardcoded temp file paths (used in tests)
+    "S110",    # try-except-pass (intentional in several places)
+    "S607",    # start-process-with-partial-path (CLI tools)
+    "S603",    # subprocess-without-shell-equals-true
+    "S314",    # xml.etree usage (safe for our use case)
+    "S103",    # bad-file-permissions
+    "S112",    # try-except-continue
+    "ARG002",  # Unused method arguments (pytest fixtures)
+    "ARG001",  # Unused function arguments
+    "PLW1510", # subprocess-run-without-check
+    "PLW0108", # unnecessary-lambda
+    "RSE102",  # unnecessary-paren-on-raise-exception
+    "RET504",  # unnecessary-assign
+    "A001",    # builtin-variable-shadowing
+    "A002",    # builtin-argument-shadowing
+    "E501",    # line-too-long (handled by formatter)
+    "SIM108",  # if-else-block-instead-of-if-exp (readability preference)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ARG001", "ARG002", "F841", "B007", "PT006"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pylint.messages_control]
+max-line-length = 100
+disable = [
+    "C0111",  # missing-docstring
+    "R0903",  # too-few-public-methods
+]
+
+[tool.pylint.basic]
+good-names = ["i", "j", "k", "ex", "e", "f", "db", "id", "_"]
+
+[tool.coverage.run]
+source = ["src/brownfield"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''

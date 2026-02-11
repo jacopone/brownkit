@@ -1,0 +1,381 @@
+{
+  "workflow": "brownfield",
+  "schema_version": "1.0",
+  "project_root": "/home/guyfawkes/brownkit",
+  "current_phase": "structure",
+  "baseline_metrics": {
+    "test_coverage": 0.0,
+    "complexity_avg": 3.140562248995984,
+    "complexity_max": 34,
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 0,
+    "medium_vulnerabilities": 0,
+    "build_status": "passing",
+    "documentation_coverage": 0.0,
+    "total_loc": 31600,
+    "test_loc": 2425,
+    "git_commits": 5,
+    "git_secrets_found": 0,
+    "complexity_violations": [
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/status.py",
+        "function": "status(...)",
+        "complexity": 34,
+        "line": 28
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/quality.py",
+        "function": "quality(...)",
+        "complexity": 26,
+        "line": 47
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/assess.py",
+        "function": "assess(...)",
+        "complexity": 18,
+        "line": 48
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/structure.py",
+        "function": "structure(...)",
+        "complexity": 17,
+        "line": 38
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/testing.py",
+        "function": "testing(...)",
+        "complexity": 16,
+        "line": 43
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/phase_machine.py",
+        "function": "_check_requirements(...)",
+        "complexity": 16,
+        "line": 63
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_measure_coverage(...)",
+        "complexity": 15,
+        "line": 140
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_detect_coverage_source(...)",
+        "complexity": 14,
+        "line": 235
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/core/installer.py",
+        "function": "install_brownfield_kit(...)",
+        "complexity": 14,
+        "line": 17
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/models/assessment.py",
+        "function": "to_markdown(...)",
+        "complexity": 13,
+        "line": 86
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/graduate.py",
+        "function": "graduate(...)",
+        "complexity": 13,
+        "line": 33
+      },
+      {
+        "file": "home/guyfawkes/brownkit/tests/fixtures/rust_complex/main.rs",
+        "function": "calculate_price(...)",
+        "complexity": 13,
+        "line": 3
+      },
+      {
+        "file": "home/guyfawkes/brownkit/examples/basic-python/before/calc.py",
+        "function": "advanced_calculate(...)",
+        "complexity": 12,
+        "line": 25
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure.py",
+        "function": "generate_markdown_plan(...)",
+        "complexity": 12,
+        "line": 255
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure_verifier.py",
+        "function": "_check_stray_files(...)",
+        "complexity": 12,
+        "line": 277
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/plugins/python_handler.py",
+        "function": "install_quality_gates(...)",
+        "complexity": 12,
+        "line": 146
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/validate.py",
+        "function": "_display_gate_results(...)",
+        "complexity": 12,
+        "line": 146
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/resume.py",
+        "function": "resume(...)",
+        "complexity": 12,
+        "line": 20
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/remediation.py",
+        "function": "execute(...)",
+        "complexity": 12,
+        "line": 48
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/gate_validator.py",
+        "function": "_get_remediation_guidance(...)",
+        "complexity": 12,
+        "line": 66
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli.py",
+        "function": "init(...)",
+        "complexity": 12,
+        "line": 32
+      },
+      {
+        "file": "home/guyfawkes/brownkit/tests/fixtures/go_unorganized/main.go",
+        "function": "ProcessOrder(...)",
+        "complexity": 12,
+        "line": 9
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_extract_complexity_violations(...)",
+        "complexity": 11,
+        "line": 298
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/quality.py",
+        "function": "analyze_complexity(...)",
+        "complexity": 11,
+        "line": 69
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure_verifier.py",
+        "function": "_verify_directory_structure(...)",
+        "complexity": 11,
+        "line": 102
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/testing.py",
+        "function": "_generate_smoke_test_content(...)",
+        "complexity": 11,
+        "line": 172
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/slash/remediate.py",
+        "function": "remediate_workflow(...)",
+        "complexity": 11,
+        "line": 36
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/validate.py",
+        "function": "validate(...)",
+        "complexity": 11,
+        "line": 32
+      }
+    ]
+  },
+  "current_metrics": {
+    "test_coverage": 0.0,
+    "complexity_avg": 3.140562248995984,
+    "complexity_max": 34,
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 0,
+    "medium_vulnerabilities": 0,
+    "build_status": "passing",
+    "documentation_coverage": 0.0,
+    "total_loc": 31600,
+    "test_loc": 2425,
+    "git_commits": 5,
+    "git_secrets_found": 0,
+    "complexity_violations": [
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/status.py",
+        "function": "status(...)",
+        "complexity": 34,
+        "line": 28
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/quality.py",
+        "function": "quality(...)",
+        "complexity": 26,
+        "line": 47
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/assess.py",
+        "function": "assess(...)",
+        "complexity": 18,
+        "line": 48
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/structure.py",
+        "function": "structure(...)",
+        "complexity": 17,
+        "line": 38
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/testing.py",
+        "function": "testing(...)",
+        "complexity": 16,
+        "line": 43
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/phase_machine.py",
+        "function": "_check_requirements(...)",
+        "complexity": 16,
+        "line": 63
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_measure_coverage(...)",
+        "complexity": 15,
+        "line": 140
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_detect_coverage_source(...)",
+        "complexity": 14,
+        "line": 235
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/core/installer.py",
+        "function": "install_brownfield_kit(...)",
+        "complexity": 14,
+        "line": 17
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/models/assessment.py",
+        "function": "to_markdown(...)",
+        "complexity": 13,
+        "line": 86
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/graduate.py",
+        "function": "graduate(...)",
+        "complexity": 13,
+        "line": 33
+      },
+      {
+        "file": "home/guyfawkes/brownkit/tests/fixtures/rust_complex/main.rs",
+        "function": "calculate_price(...)",
+        "complexity": 13,
+        "line": 3
+      },
+      {
+        "file": "home/guyfawkes/brownkit/examples/basic-python/before/calc.py",
+        "function": "advanced_calculate(...)",
+        "complexity": 12,
+        "line": 25
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure.py",
+        "function": "generate_markdown_plan(...)",
+        "complexity": 12,
+        "line": 255
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure_verifier.py",
+        "function": "_check_stray_files(...)",
+        "complexity": 12,
+        "line": 277
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/plugins/python_handler.py",
+        "function": "install_quality_gates(...)",
+        "complexity": 12,
+        "line": 146
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/validate.py",
+        "function": "_display_gate_results(...)",
+        "complexity": 12,
+        "line": 146
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/resume.py",
+        "function": "resume(...)",
+        "complexity": 12,
+        "line": 20
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/remediation.py",
+        "function": "execute(...)",
+        "complexity": 12,
+        "line": 48
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/orchestrator/gate_validator.py",
+        "function": "_get_remediation_guidance(...)",
+        "complexity": 12,
+        "line": 66
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli.py",
+        "function": "init(...)",
+        "complexity": 12,
+        "line": 32
+      },
+      {
+        "file": "home/guyfawkes/brownkit/tests/fixtures/go_unorganized/main.go",
+        "function": "ProcessOrder(...)",
+        "complexity": 12,
+        "line": 9
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/assessment/metrics_collector.py",
+        "function": "_extract_complexity_violations(...)",
+        "complexity": 11,
+        "line": 298
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/quality.py",
+        "function": "analyze_complexity(...)",
+        "complexity": 11,
+        "line": 69
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/structure_verifier.py",
+        "function": "_verify_directory_structure(...)",
+        "complexity": 11,
+        "line": 102
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/remediation/testing.py",
+        "function": "_generate_smoke_test_content(...)",
+        "complexity": 11,
+        "line": 172
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/slash/remediate.py",
+        "function": "remediate_workflow(...)",
+        "complexity": 11,
+        "line": 36
+      },
+      {
+        "file": "home/guyfawkes/brownkit/src/brownfield/cli/validate.py",
+        "function": "validate(...)",
+        "complexity": 11,
+        "line": 32
+      }
+    ]
+  },
+  "phase_timestamps": {
+    "assessment": "2025-10-23T13:45:42.370476"
+  },
+  "re_entry_events": [],
+  "graduation_timestamp": null,
+  "graduated": false,
+  "ai_agent_version": "0.1.0"
+}
